@@ -413,6 +413,11 @@ p {
     grid-column var(--transition);
 }
 
+.is-hidden {
+  display: none !important;
+}
+
+
 /* Ocultar el plan no seleccionado */
 .plan-card.hidden {
   display: none;
