@@ -341,6 +341,18 @@ function setPlan(selectedPlanValue) {
 
 
   /*
+   * Actualizar selector de docentes
+   * según el nuevo plan.
+   */
+
+  if (
+    typeof refreshTeacherSelector === 'function'
+  ) {
+    refreshTeacherSelector();
+  }
+
+
+  /*
    * Activar tarjeta seleccionada.
    */
 

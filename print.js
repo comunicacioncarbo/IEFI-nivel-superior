@@ -1,316 +1,365 @@
 /* =========================================================
    IEFI 2026 · IMPRESIÓN
-   Horario por plan/año/división
-   Resumen por docente
+   - Horario por plan / año / división
+   - Horario completo por docente
    ========================================================= */
 
+function printEscape(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
 
-/* =========================================================
-   01. VENTANA DE IMPRESIÓN
-   ========================================================= */
+function printNormalize(value) {
+  return String(value ?? '').replace(/\s+/g, ' ').trim();
+}
 
-function printDocument(title, content, orientation = 'portrait') {
+function printDate(value, day) {
+  const text = printNormalize(value);
 
-  const printWindow = window.open(
-    '',
-    '_blank',
-    'width=1000,height=800'
+  if (!text) return '';
+
+  return text.replace(
+    new RegExp('^' + day + '\\s*', 'i'),
+    ''
   );
-
-  if (!printWindow) {
-    alert(
-      'No se pudo abrir la ventana de impresión. ' +
-      'Verificá que el navegador permita ventanas emergentes.'
-    );
-    return;
-  }
-
-  printWindow.document.write(`
-    <!doctype html>
-
-    <html lang="es">
-
-    <head>
-
-      <meta charset="utf-8">
-
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1"
-      >
-
-      <title>${escapeHtml(title)}</title>
-
-      <style>
-
-        @page {
-          size: A4 ${orientation};
-          margin: 12mm;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-
-        body {
-          margin: 0;
-          font-family:
-            Arial,
-            Helvetica,
-            sans-serif;
-          color: #252162;
-          background: white;
-          font-size: 11px;
-        }
-
-        .print-header {
-          border-bottom: 3px solid #252162;
-          padding-bottom: 12px;
-          margin-bottom: 18px;
-        }
-
-        .institution {
-          font-size: 18px;
-          font-weight: 700;
-          color: #252162;
-        }
-
-        .department {
-          margin-top: 3px;
-          font-size: 11px;
-          color: #5c81a5;
-        }
-
-        .document-title {
-          margin-top: 14px;
-          font-size: 22px;
-          font-weight: 700;
-          color: #252162;
-        }
-
-        .document-subtitle {
-          margin-top: 5px;
-          font-size: 12px;
-          color: #555;
-        }
-
-        .selection {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 6px 18px;
-          margin-bottom: 18px;
-          padding: 10px;
-          background: #f0f0f0;
-          border-left: 4px solid #b91f22;
-        }
-
-        .selection-item strong {
-          color: #252162;
-        }
-
-        .week {
-          margin-bottom: 20px;
-          page-break-inside: avoid;
-        }
-
-        .week-title {
-          padding: 7px 10px;
-          background: #252162;
-          color: white;
-          font-size: 13px;
-          font-weight: 700;
-        }
-
-        .week-date {
-          padding: 5px 10px;
-          background: #f0f0f0;
-          color: #555;
-          font-size: 10px;
-        }
-
-        table {
-          width: 100%;
-          border-collapse: collapse;
-          table-layout: fixed;
-        }
-
-        th {
-          background: #5c81a5;
-          color: white;
-          padding: 7px 5px;
-          text-align: left;
-          font-size: 9px;
-        }
-
-        td {
-          border: 1px solid #d5d5d5;
-          padding: 7px 5px;
-          vertical-align: top;
-          min-height: 45px;
-        }
-
-        .day {
-          width: 20%;
-        }
-
-        .day-name {
-          font-weight: 700;
-          color: #252162;
-        }
-
-        .day-date {
-          margin-top: 2px;
-          font-size: 9px;
-          color: #777;
-        }
-
-        .subject {
-          font-weight: 700;
-          color: #252162;
-          line-height: 1.25;
-        }
-
-        .teacher {
-          margin-top: 5px;
-          color: #b91f22;
-          font-size: 10px;
-        }
-
-        .empty {
-          color: #aaa;
-          font-style: italic;
-        }
-
-        .holiday {
-          color: #b91f22;
-          font-weight: 700;
-        }
-
-        .teacher-block {
-          margin-bottom: 16px;
-          page-break-inside: avoid;
-        }
-
-        .teacher-block-title {
-          padding: 8px 10px;
-          background: #252162;
-          color: white;
-          font-size: 12px;
-          font-weight: 700;
-        }
-
-        .teacher-meta {
-          padding: 6px 10px;
-          background: #f0f0f0;
-          color: #555;
-          font-size: 10px;
-        }
-
-        .teacher-subject {
-          font-weight: 700;
-          color: #252162;
-        }
-
-        .summary {
-          margin-top: 18px;
-          padding: 10px;
-          background: #f0f0f0;
-          border-left: 4px solid #b91f22;
-          font-weight: 700;
-        }
-
-        .footer {
-          margin-top: 25px;
-          padding-top: 8px;
-          border-top: 1px solid #ddd;
-          color: #777;
-          font-size: 9px;
-          text-align: center;
-        }
-
-        @media print {
-
-          .no-print {
-            display: none !important;
-          }
-
-        }
-
-      </style>
-
-    </head>
-
-    <body>
-
-      ${content}
-
-      <div class="footer">
-        Página construida por Dpto. de Comunicación ENSA Carbó
-        · IEFI 2026
-      </div>
-
-    </body>
-
-    </html>
-  `);
-
-  printWindow.document.close();
-
-  printWindow.onload = () => {
-
-    printWindow.focus();
-
-    setTimeout(() => {
-      printWindow.print();
-    }, 250);
-
-  };
 }
 
 
-/* =========================================================
-   02. ENCABEZADO COMÚN
-   ========================================================= */
+/* ---------------------------------------------------------
+   Ventana de impresión
+   --------------------------------------------------------- */
 
-function printHeader(title, subtitle = '') {
+function printDocument(
+  title,
+  content,
+  orientation = 'portrait'
+) {
+
+  const win = window.open(
+    '',
+    '_blank',
+    'width=1100,height=800'
+  );
+
+  if (!win) {
+
+    alert(
+      'No se pudo abrir la ventana de impresión. ' +
+      'Permití ventanas emergentes para este sitio.'
+    );
+
+    return;
+  }
+
+  win.document.open();
+
+  win.document.write(`
+<!doctype html>
+
+<html lang="es">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1"
+>
+
+<title>
+  ${printEscape(title)}
+</title>
+
+<style>
+
+@page {
+  size: A4 ${orientation};
+  margin: 12mm;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: #252162;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+  font-size: 10px;
+}
+
+.header {
+  border-bottom: 3px solid #252162;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+
+.institution {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin-top: 3px;
+  color: #5c81a5;
+  font-size: 10px;
+}
+
+.title {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.description {
+  margin-top: 3px;
+  color: #555;
+  font-size: 10px;
+}
+
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 18px;
+  margin-bottom: 15px;
+  padding: 9px 10px;
+  background: #f0f0f0;
+  border-left: 4px solid #b91f22;
+}
+
+.info-item strong {
+  color: #252162;
+}
+
+.week {
+  margin-bottom: 17px;
+  page-break-inside: avoid;
+}
+
+.week-title {
+  padding: 7px 9px;
+  background: #252162;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.week-dates {
+  padding: 5px 9px;
+  background: #f0f0f0;
+  color: #555;
+  font-size: 9px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 6px 5px;
+  background: #5c81a5;
+  color: #fff;
+  border: 1px solid #5c81a5;
+  text-align: left;
+  font-size: 9px;
+}
+
+td {
+  padding: 6px 5px;
+  border: 1px solid #d2d2d2;
+  vertical-align: top;
+}
+
+.day-name {
+  font-weight: 700;
+  color: #252162;
+}
+
+.date {
+  margin-top: 2px;
+  color: #777;
+  font-size: 8px;
+}
+
+.subject {
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.teacher {
+  margin-top: 3px;
+  color: #b91f22;
+  font-size: 9px;
+}
+
+.empty {
+  color: #999;
+  font-style: italic;
+}
+
+.holiday {
+  color: #b91f22;
+  font-weight: 700;
+}
+
+.summary {
+  margin-top: 15px;
+  padding: 9px 10px;
+  background: #f0f0f0;
+  border-left: 4px solid #b91f22;
+  font-weight: 700;
+}
+
+.footer {
+  margin-top: 18px;
+  padding-top: 7px;
+  border-top: 1px solid #ddd;
+  color: #777;
+  text-align: center;
+  font-size: 8px;
+}
+
+.print-button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 6px;
+  background: #252162;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.teacher-print-label {
+  margin-bottom: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #252162;
+}
+
+.teacher-selector {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  color: #252162;
+  font: inherit;
+}
+
+#teacherPrintControls {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #ddd;
+}
+
+@media print {
+
+  .print-button,
+  #teacherPrintControls {
+    display: none !important;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+${content}
+
+<div class="footer">
+  Página construida por Dpto. de Comunicación ENSA Carbó
+  · IEFI 2026
+</div>
+
+</body>
+
+</html>
+  `);
+
+  win.document.close();
+
+  setTimeout(() => {
+
+    win.focus();
+
+    win.print();
+
+  }, 400);
+
+}
+
+
+/* ---------------------------------------------------------
+   Encabezado
+   --------------------------------------------------------- */
+
+function printHeader(
+  title,
+  description = ''
+) {
 
   return `
 
-    <header class="print-header">
+    <div class="header">
 
       <div class="institution">
         Escuela Normal Superior Dr. Alejandro Carbó
       </div>
 
-      <div class="department">
+      <div class="subtitle">
         Instancias Evaluativas Finales Integradoras · IEFI 2026
       </div>
 
-      <div class="document-title">
-        ${escapeHtml(title)}
+      <div class="title">
+        ${printEscape(title)}
       </div>
 
       ${
-        subtitle
+        description
           ? `
-            <div class="document-subtitle">
-              ${escapeHtml(subtitle)}
+            <div class="description">
+              ${printEscape(description)}
             </div>
           `
           : ''
       }
 
-    </header>
+    </div>
 
   `;
 }
 
 
 /* =========================================================
-   03. IMPRIMIR HORARIO SELECCIONADO
+   HORARIO DE PLAN / AÑO / DIVISIÓN
    ========================================================= */
 
 function printSelectedSchedule() {
+
+  if (typeof selected !== 'function') {
+
+    alert(
+      'No se pudo acceder a la selección actual.'
+    );
+
+    return;
+  }
 
   const record = selected();
 
@@ -323,16 +372,10 @@ function printSelectedSchedule() {
     return;
   }
 
-  let weeksHtml = '';
+  let weeks = '';
 
   (record.weeks || []).forEach(
     (week, weekIndex) => {
-
-      const firstDate =
-        week.dates?.[0] || '';
-
-      const lastDate =
-        week.dates?.[4] || '';
 
       let rows = '';
 
@@ -345,7 +388,7 @@ function printSelectedSchedule() {
             );
 
           const date =
-            normalizePrintDate(
+            printDate(
               week.dates?.[dayIndex],
               day
             );
@@ -356,22 +399,24 @@ function printSelectedSchedule() {
 
               <tr>
 
-                <td class="day">
+                <td>
 
                   <div class="day-name">
-                    ${day}
+                    ${printEscape(day)}
                   </div>
 
-                  <div class="day-date">
-                    ${escapeHtml(date)}
+                  <div class="date">
+                    ${printEscape(date)}
                   </div>
 
                 </td>
 
                 <td colspan="2">
+
                   <span class="empty">
                     Sin espacio asignado
                   </span>
+
                 </td>
 
               </tr>
@@ -385,27 +430,27 @@ function printSelectedSchedule() {
 
             <tr>
 
-              <td class="day">
+              <td>
 
                 <div class="day-name">
-                  ${day}
+                  ${printEscape(day)}
                 </div>
 
-                <div class="day-date">
-                  ${escapeHtml(date)}
+                <div class="date">
+                  ${printEscape(date)}
                 </div>
 
               </td>
 
               <td>
 
-                <div class="
-                  ${item.holiday
+                <div class="${
+                  item.holiday
                     ? 'holiday'
-                    : 'subject'}
-                ">
+                    : 'subject'
+                }">
 
-                  ${escapeHtml(
+                  ${printEscape(
                     item.subject
                   )}
 
@@ -419,14 +464,14 @@ function printSelectedSchedule() {
                   item.teacher
                     ? `
                       <div class="teacher">
-                        ${escapeHtml(
+                        ${printEscape(
                           item.teacher
                         )}
                       </div>
                     `
                     : `
                       <span class="empty">
-                        No consignado
+                        Docente no consignado
                       </span>
                     `
                 }
@@ -440,7 +485,17 @@ function printSelectedSchedule() {
         }
       );
 
-      weeksHtml += `
+      const firstDate =
+        printNormalize(
+          week.dates?.[0]
+        );
+
+      const lastDate =
+        printNormalize(
+          week.dates?.[4]
+        );
+
+      weeks += `
 
         <section class="week">
 
@@ -448,10 +503,18 @@ function printSelectedSchedule() {
             Semana ${weekIndex + 1}
           </div>
 
-          <div class="week-date">
-            ${escapeHtml(firstDate)}
-            —
-            ${escapeHtml(lastDate)}
+          <div class="week-dates">
+
+            ${printEscape(firstDate)}
+
+            ${
+              firstDate && lastDate
+                ? ' — '
+                : ''
+            }
+
+            ${printEscape(lastDate)}
+
           </div>
 
           <table>
@@ -459,23 +522,27 @@ function printSelectedSchedule() {
             <thead>
 
               <tr>
-                <th class="day">
+
+                <th style="width:18%">
                   Día
                 </th>
 
-                <th>
+                <th style="width:42%">
                   Espacio curricular
                 </th>
 
-                <th>
+                <th style="width:40%">
                   Docente
                 </th>
+
               </tr>
 
             </thead>
 
             <tbody>
+
               ${rows}
+
             </tbody>
 
           </table>
@@ -494,29 +561,49 @@ function printSelectedSchedule() {
       'Cronograma completo de la división seleccionada'
     )}
 
-    <div class="selection">
+    <div class="info">
 
-      <div class="selection-item">
-        <strong>Plan:</strong>
-        ${escapeHtml(plan)}
+      <div class="info-item">
+
+        <strong>
+          Programa:
+        </strong>
+
+        ${printEscape(plan)}
+
       </div>
 
-      <div class="selection-item">
-        <strong>Año:</strong>
-        ${escapeHtml(record.year)}
+      <div class="info-item">
+
+        <strong>
+          Año:
+        </strong>
+
+        ${printEscape(record.year)}
+
       </div>
 
-      <div class="selection-item">
-        <strong>División:</strong>
-        ${escapeHtml(record.section)}
+      <div class="info-item">
+
+        <strong>
+          División:
+        </strong>
+
+        ${printEscape(record.section)}
+
       </div>
 
       ${
         record.time
           ? `
-            <div class="selection-item">
-              <strong>Horario:</strong>
-              ${escapeHtml(record.time)}
+            <div class="info-item">
+
+              <strong>
+                Horario:
+              </strong>
+
+              ${printEscape(record.time)}
+
             </div>
           `
           : ''
@@ -524,164 +611,383 @@ function printSelectedSchedule() {
 
     </div>
 
-    ${weeksHtml}
+    ${weeks}
 
   `;
 
   printDocument(
-    `IEFI 2026 · ${plan} · ${record.year} · ${record.section}`,
+    'IEFI 2026 - Horario',
     content,
     'landscape'
   );
+
 }
-
-
 /* =========================================================
-   04. BUSCAR INFORMACIÓN DE DOCENTES
+   DOCENTES
    ========================================================= */
 
-function getTeacherResults(searchTerm) {
+/*
+ * Devuelve los registros del programa actualmente seleccionado.
+ */
+function printRecords() {
 
-  const term =
-    normalize(searchTerm)
-      .toLowerCase();
-
-  if (!term || !plan) {
+  if (!plan) {
     return [];
   }
 
-  const results =
-    allSearchResults(term);
+  if (
+    typeof DATA !== 'undefined' &&
+    Array.isArray(DATA[plan])
+  ) {
+    return DATA[plan];
+  }
 
-  /*
-   * Agrupamos por docente.
-   *
-   * Esto evita que "Navarro" genere
-   * un resumen separado por cada aparición.
-   */
+  if (typeof currentRecords === 'function') {
+    return currentRecords();
+  }
 
-  const teachers = {};
+  return [];
+}
 
-  results.forEach(result => {
 
-    const teacher =
-      normalize(result.teacher);
+/*
+ * Obtiene todos los docentes del programa seleccionado.
+ *
+ * El Map evita duplicados.
+ */
+function getAllTeachers() {
 
-    if (!teacher) {
-      return;
+  const teachers = new Map();
+
+  printRecords().forEach(
+    record => {
+
+      (record.weeks || []).forEach(
+        week => {
+
+          (week.cells || []).forEach(
+            raw => {
+
+              const item =
+                parseCell(raw);
+
+              if (
+                !item ||
+                item.holiday ||
+                !item.teacher
+              ) {
+                return;
+              }
+
+              const name =
+                printNormalize(
+                  item.teacher
+                );
+
+              if (!name) {
+                return;
+              }
+
+              const key =
+                name.toLocaleLowerCase(
+                  'es'
+                );
+
+              if (
+                !teachers.has(key)
+              ) {
+
+                teachers.set(
+                  key,
+                  name
+                );
+
+              }
+
+            }
+          );
+
+        }
+      );
+
     }
+  );
 
-    const key =
-      teacher.toLowerCase();
-
-    if (!teachers[key]) {
-
-      teachers[key] = {
-        name: teacher,
-        assignments: []
-      };
-
-    }
-
-    teachers[key].assignments.push(
-      result
+  return Array
+    .from(teachers.values())
+    .sort(
+      (a, b) =>
+        a.localeCompare(
+          b,
+          'es',
+          {
+            sensitivity: 'base'
+          }
+        )
     );
 
-  });
+}
 
-  return Object.values(teachers);
+
+/*
+ * Devuelve todas las participaciones
+ * de un docente.
+ */
+function getTeacherSchedule(
+  teacherName
+) {
+
+  const target =
+    printNormalize(
+      teacherName
+    ).toLocaleLowerCase('es');
+
+  if (!target) {
+    return [];
+  }
+
+  const assignments = [];
+
+  printRecords().forEach(
+    record => {
+
+      (record.weeks || []).forEach(
+        (week, weekIndex) => {
+
+          (week.cells || []).forEach(
+            (raw, dayIndex) => {
+
+              const item =
+                parseCell(raw);
+
+              if (
+                !item ||
+                item.holiday ||
+                !item.teacher
+              ) {
+                return;
+              }
+
+              const currentTeacher =
+                printNormalize(
+                  item.teacher
+                ).toLocaleLowerCase(
+                  'es'
+                );
+
+              if (
+                currentTeacher !== target
+              ) {
+                return;
+              }
+
+              const day =
+                dayNames[dayIndex] || '';
+
+              assignments.push({
+
+                program:
+                  plan,
+
+                year:
+                  record.year,
+
+                section:
+                  record.section,
+
+                time:
+                  record.time || '',
+
+                week:
+                  weekIndex + 1,
+
+                day:
+                  day,
+
+                dayIndex:
+                  dayIndex,
+
+                date:
+                  printDate(
+                    week.dates?.[dayIndex],
+                    day
+                  ),
+
+                subject:
+                  item.subject || '',
+
+                teacher:
+                  item.teacher || ''
+
+              });
+
+            }
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+  /*
+   * Orden:
+   *
+   * año
+   * semana
+   * día
+   * horario
+   * división
+   */
+  assignments.sort(
+    (a, b) => {
+
+      const year =
+        String(a.year)
+          .localeCompare(
+            String(b.year),
+            'es',
+            {
+              numeric: true,
+              sensitivity: 'base'
+            }
+          );
+
+      if (year !== 0) {
+        return year;
+      }
+
+      if (
+        a.week !== b.week
+      ) {
+        return a.week - b.week;
+      }
+
+      if (
+        a.dayIndex !== b.dayIndex
+      ) {
+        return (
+          a.dayIndex -
+          b.dayIndex
+        );
+      }
+
+      const time =
+        String(a.time)
+          .localeCompare(
+            String(b.time),
+            'es',
+            {
+              numeric: true
+            }
+          );
+
+      if (time !== 0) {
+        return time;
+      }
+
+      return String(a.section)
+        .localeCompare(
+          String(b.section),
+          'es',
+          {
+            sensitivity: 'base'
+          }
+        );
+
+    }
+  );
+
+  return assignments;
+
 }
 
 
 /* =========================================================
-   05. IMPRIMIR RESUMEN DE DOCENTE
+   IMPRIMIR HORARIO DEL DOCENTE
    ========================================================= */
 
-function printTeacherSummary(searchTerm) {
+function printTeacherSchedule(
+  teacherName
+) {
 
-  const teachers =
-    getTeacherResults(searchTerm);
+  const assignments =
+    getTeacherSchedule(
+      teacherName
+    );
 
-  if (!teachers.length) {
+  if (!assignments.length) {
 
     alert(
-      'No encontramos un docente con ese nombre.'
+      'No encontramos actividades para el docente seleccionado.'
     );
 
     return;
   }
 
-  /*
-   * Si hay varios docentes que coinciden,
-   * usamos el primero.
-   *
-   * Ejemplo:
-   * "García" puede encontrar varios docentes.
-   */
-
   const teacher =
-    teachers[0];
-
-  const assignments =
-    teacher.assignments;
+    assignments[0].teacher;
 
   let rows = '';
 
   assignments.forEach(
-    assignment => {
+    item => {
 
       rows += `
 
         <tr>
 
           <td>
-
-            <strong>
-              ${escapeHtml(
-                assignment.year
-              )} año
-            </strong>
-
-          </td>
-
-          <td>
-            ${escapeHtml(
-              assignment.section
+            ${printEscape(
+              item.program
             )}
           </td>
 
           <td>
-            ${escapeHtml(
-              assignment.time || ''
+            ${printEscape(
+              item.year
+            )} año
+          </td>
+
+          <td>
+            ${printEscape(
+              item.section
+            )}
+          </td>
+
+          <td>
+            ${printEscape(
+              item.time
             )}
           </td>
 
           <td>
             Semana
-            ${assignment.week + 1}
+            ${item.week}
           </td>
 
           <td>
 
-            ${escapeHtml(
-              assignment.dayName
-            )}
-
-            <br>
-
-            <span class="day-date">
-              ${escapeHtml(
-                assignment.date
+            <strong>
+              ${printEscape(
+                item.day
               )}
-            </span>
+            </strong>
+
+            <div class="date">
+              ${printEscape(
+                item.date
+              )}
+            </div>
 
           </td>
 
           <td>
 
-            <div class="teacher-subject">
-              ${escapeHtml(
-                assignment.subject
+            <div class="subject">
+              ${printEscape(
+                item.subject
               )}
             </div>
 
@@ -694,44 +1000,63 @@ function printTeacherSummary(searchTerm) {
     }
   );
 
+
   const content = `
 
     ${printHeader(
-      'Resumen de docente',
-      'Participación en el cronograma IEFI 2026'
+      'Horario del docente',
+      'Todas las participaciones del docente en IEFI 2026'
     )}
 
-    <div class="selection">
+    <div class="info">
 
-      <div class="selection-item">
+      <div class="info-item">
 
         <strong>
           Docente:
         </strong>
 
-        ${escapeHtml(
-          teacher.name
+        ${printEscape(
+          teacher
         )}
 
       </div>
 
-      <div class="selection-item">
+      <div class="info-item">
 
         <strong>
-          Plan:
+          Programa:
         </strong>
 
-        ${escapeHtml(plan)}
+        ${printEscape(
+          plan
+        )}
+
+      </div>
+
+      <div class="info-item">
+
+        <strong>
+          Total:
+        </strong>
+
+        ${assignments.length}
+        participaciones
 
       </div>
 
     </div>
+
 
     <table>
 
       <thead>
 
         <tr>
+
+          <th>
+            Programa
+          </th>
 
           <th>
             Año
@@ -750,7 +1075,7 @@ function printTeacherSummary(searchTerm) {
           </th>
 
           <th>
-            Día
+            Día / fecha
           </th>
 
           <th>
@@ -762,180 +1087,289 @@ function printTeacherSummary(searchTerm) {
       </thead>
 
       <tbody>
+
         ${rows}
+
       </tbody>
 
     </table>
 
+
     <div class="summary">
 
-      Total de participaciones:
+      Docente:
+      ${printEscape(
+        teacher
+      )}
+
+      ·
+
       ${assignments.length}
+      participaciones
 
     </div>
 
   `;
 
+
   printDocument(
-    `IEFI 2026 · ${teacher.name}`,
+    'IEFI 2026 - Horario del docente',
     content,
-    'portrait'
+    'landscape'
   );
+
 }
 
 
 /* =========================================================
-   06. FECHAS
+   SELECTOR DE DOCENTES
    ========================================================= */
 
-function normalizePrintDate(
-  value,
-  day
-) {
-
-  const text =
-    normalize(value);
-
-  if (!text) {
-    return '';
-  }
-
-  return text
-    .replace(
-      new RegExp(
-        '^' + day + '\\s*',
-        'i'
-      ),
-      ''
-    );
-}
-
-
-/* =========================================================
-   07. CREAR BOTONES
-   ========================================================= */
-
-function createPrintButtons() {
-
-  /*
-   * Botón de horario
-   */
-
-  const cronTop =
-    document.querySelector(
-      '.cron-top'
-    );
+function createTeacherSelector() {
 
   if (
-    cronTop &&
-    !document.getElementById(
-      'printSchedule'
+    document.getElementById(
+      'teacherSelector'
     )
   ) {
-
-    const button =
-      document.createElement(
-        'button'
-      );
-
-    button.id =
-      'printSchedule';
-
-    button.type =
-      'button';
-
-    button.className =
-      'print-button';
-
-    button.textContent =
-      'Imprimir horario';
-
-    button.addEventListener(
-      'click',
-      printSelectedSchedule
-    );
-
-    const searchWrap =
-      cronTop.querySelector(
-        '.search-wrap'
-      );
-
-    if (searchWrap) {
-
-      searchWrap.appendChild(
-        button
-      );
-
-    } else {
-
-      cronTop.appendChild(
-        button
-      );
-
-    }
-
+    return;
   }
 
-
-  /*
-   * Botón de resumen docente
-   */
 
   const searchWrap =
     document.querySelector(
       '.search-wrap'
     );
 
-  if (
-    searchWrap &&
-    !document.getElementById(
-      'printTeacher'
-    )
-  ) {
 
-    const button =
-      document.createElement(
-        'button'
-      );
+  if (!searchWrap) {
+    return;
+  }
 
-    button.id =
-      'printTeacher';
 
-    button.type =
-      'button';
-
-    button.className =
-      'print-button';
-
-    button.textContent =
-      'Imprimir docente';
-
-    button.addEventListener(
-      'click',
-      () => {
-
-        const value =
-          searchInput
-            ? searchInput.value.trim()
-            : '';
-
-        if (!value) {
-
-          alert(
-            'Primero buscá un docente.'
-          );
-
-          return;
-        }
-
-        printTeacherSummary(
-          value
-        );
-
-      }
+  const wrapper =
+    document.createElement(
+      'div'
     );
 
+  wrapper.id =
+    'teacherPrintControls';
+
+
+  wrapper.innerHTML = `
+
+    <div class="teacher-print-label">
+
+      Horario de docente
+
+    </div>
+
+
+    <select
+      id="teacherSelector"
+      class="teacher-selector"
+      aria-label="Seleccionar docente"
+    >
+
+      <option value="">
+
+        Seleccioná un docente
+
+      </option>
+
+    </select>
+
+
+    <button
+      id="printTeacher"
+      class="print-button"
+      type="button"
+    >
+
+      Imprimir horario del docente
+
+    </button>
+
+  `;
+
+
+  searchWrap.appendChild(
+    wrapper
+  );
+
+
+  const selector =
+    document.getElementById(
+      'teacherSelector'
+    );
+
+
+  const button =
+    document.getElementById(
+      'printTeacher'
+    );
+
+
+  function refresh() {
+
+    const current =
+      selector.value;
+
+    const teachers =
+      getAllTeachers();
+
+
+    selector.innerHTML = `
+
+      <option value="">
+
+        Seleccioná un docente
+
+      </option>
+
+
+      ${
+        teachers
+          .map(
+            name => `
+
+              <option
+                value="${printEscape(name)}"
+              >
+
+                ${printEscape(name)}
+
+              </option>
+
+            `
+          )
+          .join('')
+      }
+
+    `;
+
+
+    if (
+      teachers.includes(
+        current
+      )
+    ) {
+
+      selector.value =
+        current;
+
+    }
+
+  }
+
+
+  refresh();
+
+
+  button.addEventListener(
+    'click',
+    () => {
+
+      const teacher =
+        selector.value;
+
+
+      if (!teacher) {
+
+        alert(
+          'Seleccioná un docente antes de imprimir.'
+        );
+
+        return;
+      }
+
+
+      printTeacherSchedule(
+        teacher
+      );
+
+    }
+  );
+
+
+  /*
+   * Esta función queda disponible
+   * para que script.js pueda actualizar
+   * el listado cuando cambia PEP / PEI.
+   */
+  window.refreshTeacherSelector =
+    refresh;
+
+}
+/* =========================================================
+   BOTÓN DE IMPRESIÓN DEL HORARIO
+   ========================================================= */
+
+function createSchedulePrintButton() {
+
+  if (
+    document.getElementById(
+      'printSchedule'
+    )
+  ) {
+    return;
+  }
+
+
+  const cronTop =
+    document.querySelector(
+      '.cron-top'
+    );
+
+
+  if (!cronTop) {
+    return;
+  }
+
+
+  const button =
+    document.createElement(
+      'button'
+    );
+
+
+  button.id =
+    'printSchedule';
+
+
+  button.type =
+    'button';
+
+
+  button.className =
+    'print-button';
+
+
+  button.textContent =
+    'Imprimir horario';
+
+
+  button.addEventListener(
+    'click',
+    printSelectedSchedule
+  );
+
+
+  const searchWrap =
+    cronTop.querySelector(
+      '.search-wrap'
+    );
+
+
+  if (searchWrap) {
+
     searchWrap.appendChild(
+      button
+    );
+
+  } else {
+
+    cronTop.appendChild(
       button
     );
 
@@ -945,79 +1379,16 @@ function createPrintButtons() {
 
 
 /* =========================================================
-   08. ESTILOS DE LOS BOTONES
-   ========================================================= */
-
-function addPrintButtonStyles() {
-
-  if (
-    document.getElementById(
-      'print-button-styles'
-    )
-  ) {
-    return;
-  }
-
-  const style =
-    document.createElement(
-      'style'
-    );
-
-  style.id =
-    'print-button-styles';
-
-  style.textContent = `
-
-    .print-button {
-      margin-top: 12px;
-      width: 100%;
-      padding: 11px 16px;
-      border: 0;
-      border-radius: 6px;
-      background: #252162;
-      color: #fff;
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-      transition:
-        background .2s ease,
-        transform .2s ease;
-    }
-
-    .print-button:hover {
-      background: #5c81a5;
-    }
-
-    .print-button:active {
-      transform: translateY(1px);
-    }
-
-    @media print {
-      .print-button {
-        display: none !important;
-      }
-    }
-
-  `;
-
-  document.head.appendChild(
-    style
-  );
-
-}
-
-
-/* =========================================================
-   09. INICIALIZACIÓN
+   INICIALIZACIÓN
    ========================================================= */
 
 document.addEventListener(
   'DOMContentLoaded',
   () => {
 
-    addPrintButtonStyles();
+    createSchedulePrintButton();
 
-    createPrintButtons();
+    createTeacherSelector();
 
   }
 );
