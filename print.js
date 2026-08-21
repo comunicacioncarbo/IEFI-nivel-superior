@@ -1124,7 +1124,7 @@ function printTeacherSchedule(
 /* =========================================================
    SELECTOR DE DOCENTES
    ========================================================= */
-
+/*
 function createTeacherSelector() {
 
   if (
@@ -1292,15 +1292,12 @@ function createTeacherSelector() {
   );
 
 
-  /*
-   * Esta función queda disponible
-   * para que script.js pueda actualizar
-   * el listado cuando cambia PEP / PEI.
-   */
+  
   window.refreshTeacherSelector =
     refresh;
 
 }
+*/
 /* =========================================================
    BOTÓN DE IMPRESIÓN DEL HORARIO
    ========================================================= */
@@ -1387,8 +1384,8 @@ document.addEventListener(
   () => {
 
     createSchedulePrintButton();
-
+    /*
     createTeacherSelector();
-
+    */
   }
 );
