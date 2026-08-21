@@ -1200,65 +1200,32 @@ function render() {
   }
 
 
-  /*
-   * Contexto del plan.
-   */
+  /* -------------------------------------------------------
+     Contexto del plan
+     ------------------------------------------------------- */
 
   planContext.innerHTML = `
-    Plan seleccionado:
-    <strong>${plan}</strong>
-  `;
-
-
-  /*
-   * Resumen del recorrido.
-   */
-
-  selectedPlan.innerHTML = `
-
     <span class="selection-label">
-      Recorrido seleccionado
+      Plan seleccionado
     </span>
 
     <strong>
       ${plan}
     </strong>
 
-    <span>
-      · ${escapeHtml(
-        record.year
-      )} año
-    </span>
-
-    <span>
-      · Sección
-      ${escapeHtml(
-        record.section
-      )}
-    </span>
-
-    ${
-      record.time
-        ? `
-          <span>
-            · ${escapeHtml(
-              record.time
-            )}
-          </span>
-        `
-        : ''
-    }
-
     <button
       type="button"
       class="selection-change"
       id="changePlan"
     >
-      Cambiar
+      Cambiar plan
     </button>
-
   `;
 
+
+  /* -------------------------------------------------------
+     Botón cambiar plan
+     ------------------------------------------------------- */
 
   const changePlanButton =
     document.getElementById(
@@ -1272,12 +1239,13 @@ function render() {
       'click',
       resetToPlanSelection
     );
+
   }
 
 
-  /*
-   * Contexto del cronograma.
-   */
+  /* -------------------------------------------------------
+     Contexto del cronograma
+     ------------------------------------------------------- */
 
   cronTitle.textContent =
     `Semana ${weekIndex + 1}`;
@@ -1294,25 +1262,39 @@ function render() {
     )} año
 
     · Sección
+
     <strong>
       ${escapeHtml(
         record.section
       )}
     </strong>
 
+    ${
+      record.time
+        ? `
+          · ${escapeHtml(
+              record.time
+            )}
+        `
+        : ''
+    }
+
     · IEFI
 
   `;
 
+
+  /* -------------------------------------------------------
+     Renderizar contenido
+     ------------------------------------------------------- */
 
   renderYears();
 
   renderWeeks();
 
   renderDays();
+
 }
-
-
 /* =========================================================
    19. MODAL
    ========================================================= */

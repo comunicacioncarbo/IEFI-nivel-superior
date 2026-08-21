@@ -413,10 +413,6 @@ p {
     grid-column var(--transition);
 }
 
-.is-hidden {
-  display: none !important;
-}
-
 
 /* Ocultar el plan no seleccionado */
 .plan-card.hidden {
@@ -1391,4 +1387,9 @@ p {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+
+.is-hidden {
+  display: none !important;
 }
