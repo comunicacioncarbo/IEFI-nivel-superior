@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IEFI 2026 · ENSA Carbó</title>
+<meta name="description" content="Cronograma interactivo de las Instancias Evaluativas Finales Integradoras 2026 de ENSA Carbó.">
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<div class="page">
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#inicio"><span class="mark logo-mark"><img src="./resources/Logo-A-Carbo-Blanco1-1711x1900.png" alt="Logo ENSA Carbó"></span></a>
+    <div class="nav-links">
+      <button onclick="scrollToId('planes')">Planes</button>
+      <button onclick="scrollToId('recorrido')">Recorrido</button>
+      <button onclick="scrollToId('cronograma')">Cronograma</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="inicio" class="hero">
+  <div>
+    <div class="eyebrow">Escuela Normal Superior Dr. Alejandro Carbó</div>
+    <h1>IEFI<br><span>2026</span></h1>
+    <p>Instancias Evaluativas Finales Integradoras. Un cronograma para recorrer por plan, año, sección y semana.</p>
+  </div>
+  <div class="hero-side">
+    <div class="big">NOV</div>
+    <p>Del 2 al 27 de noviembre de 2026.<br>Cuatro semanas de organización académica.</p>
+  </div>
+</section>
+
+<section id="planes" class="section">
+  <div class="section-head">
+    <div><div class="section-kicker">01 · Elegí tu plan</div><h2 class="section-title">Dos recorridos.</h2></div>
+    <div class="context">Seleccioná uno para comenzar.</div>
+  </div>
+  <div class="plan-grid">
+    <button class="plan-card active" id="planPEP" onclick="setPlan('PEP')" type="button">
+      <div class="label">Plan</div><h3>PEP</h3><p>Recorrido correspondiente al cronograma PEP 2026 de ENSA Carbó.</p><span class="arrow">↗</span>
+    </button>
+    <button class="plan-card" id="planPEI" onclick="setPlan('PEI')" type="button">
+      <div class="label">Plan</div><h3>PEI</h3><p>Recorrido correspondiente al segundo cronograma institucional provisto.</p><span class="arrow">↗</span>
+    </button>
+  </div>
+</section>
+
+<section id="recorrido" class="route">
+  <div class="section" style="padding-top:0;padding-bottom:0">
+    <div class="section-head">
+      <div><div class="section-kicker">02 · Tu recorrido</div><h2 class="section-title">Elegí año y sección.</h2></div>
+      <div id="planContext" class="context"></div>
+    </div>
+    <div id="years" class="year-grid"></div>
+    <div id="sections" class="sections"></div>
+  </div>
+</section>
+
+<section id="cronograma" class="cron">
+  <div class="cron-top">
+    <div>
+      <div class="section-kicker">03 · Organización semanal</div>
+      <h2 class="section-title" id="cronTitle">Semana 1</h2>
+      <div class="context" id="cronContext"></div>
+      <div class="search-hint">La búsqueda recorre todo el plan y te lleva directamente a la semana y al día correspondiente.</div>
+    </div>
+    <div class="search-wrap">
+      <div class="search-label">Buscá un docente o espacio</div>
+      <input id="search" class="search" type="search" autocomplete="off"
+             placeholder="Ej.: Giménez, Pedagogía, Navarro…">
+      <div id="searchResults" class="search-results"></div>
+    </div>
+  </div>
+  <div id="weeks" class="weeks"></div>
+  <div id="days" class="days"></div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <strong>ENSA Carbó · IEFI 2026</strong><br>
+      Organización institucional
+    </div>
+    <div>
+      PEP · PEI · Noviembre 2026
+    </div>
+    <div class="footer-logo">
+      <img src=".resources/original.svg" alt="Logo Dpto Comunicación">
+    </div>
+  </div>
+  <div class="footer-credit">Página construida por Dpto. de Comunicación ENSA Carbó</div>
+</footer>
+
+<div id="modal" class="modal">
+ <div class="modal-box">
+   <button class="modal-close" onclick="closeModal()">Cerrar</button>
+   <div id="modalTag" class="modal-tag"></div>
+   <h2 id="modalTitle"></h2>
+   <p id="modalTeacher"></p>
+   <p id="modalDate"></p>
+ </div>
+</div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
