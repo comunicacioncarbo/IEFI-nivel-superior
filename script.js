@@ -48,6 +48,10 @@ const planContext =
 const selectedPlan =
   document.getElementById('selectedPlan');
 
+if (!selectedPlan) {
+  console.warn('Elemento #selectedPlan no encontrado. Se continúa sin panel de plan seleccionado.');
+};
+
 const cronTitle =
   document.getElementById('cronTitle');
 
@@ -418,19 +422,11 @@ function updatePlanContext() {
 
     planContext.innerHTML = '';
 
-    selectedPlan.innerHTML = '';
-
     return;
   }
 
 
   planContext.innerHTML = `
-    Plan seleccionado:
-    <strong>${plan}</strong>
-  `;
-
-
-  selectedPlan.innerHTML = `
 
     <span class="selection-label">
       Plan seleccionado
@@ -463,7 +459,9 @@ function updatePlanContext() {
       'click',
       resetToPlanSelection
     );
+
   }
+
 }
 
 
@@ -483,6 +481,10 @@ function resetToPlanSelection() {
   resetSearch();
 
 
+  /* -------------------------------------------------------
+     Restaurar las tarjetas de planes
+     ------------------------------------------------------- */
+
   planPEP.classList.remove(
     'active'
   );
@@ -500,6 +502,10 @@ function resetToPlanSelection() {
     'hidden'
   );
 
+
+  /* -------------------------------------------------------
+     Ocultar recorrido y cronograma
+     ------------------------------------------------------- */
 
   hideSection(
     recorridoSection
@@ -510,14 +516,29 @@ function resetToPlanSelection() {
   );
 
 
+  /* -------------------------------------------------------
+     Limpiar contenido dinámico
+     ------------------------------------------------------- */
+
   planContext.innerHTML = '';
 
-  selectedPlan.innerHTML = '';
+  yearsContainer.innerHTML = '';
 
+  sectionsContainer.innerHTML = '';
+
+  weeksContainer.innerHTML = '';
+
+  daysContainer.innerHTML = '';
+
+
+  /* -------------------------------------------------------
+     Volver a la selección de plan
+     ------------------------------------------------------- */
 
   scrollToId(
     'planes'
   );
+
 }
 
 
