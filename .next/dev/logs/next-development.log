@@ -1,11 +1,4 @@
-{"timestamp":"00:00:04.014","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:04.023","source":"Server","level":"LOG","message":"  We detected TypeScript in your project and reconfigured your tsconfig.json file for you."}
-{"timestamp":"00:00:04.027","source":"Server","level":"LOG","message":"  The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:\n"}
-{"timestamp":"00:00:04.034","source":"Server","level":"LOG","message":"  \t- include was updated to add '.next/dev/types/**/*.ts'"}
-{"timestamp":"00:00:04.038","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:04.039","source":"Server","level":"LOG","message":"  The following mandatory changes were made to your tsconfig.json:\n"}
-{"timestamp":"00:00:04.042","source":"Server","level":"LOG","message":"  \t- jsx was set to react-jsx (next.js uses the React automatic runtime)"}
-{"timestamp":"00:00:04.043","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:06.588","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:02:34.714","source":"Server","level":"LOG","message":"○ Compiling /_not-found/page ..."}
-{"timestamp":"00:02:53.308","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"00:00:09.331","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:02:13.258","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"00:02:17.615","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"00:02:20.223","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
