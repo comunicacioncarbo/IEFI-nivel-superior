@@ -1,0 +1,252 @@
+PROF,AÑO,SECCIÓN,HORA,FECHA,MATERIA,PROFESOR/A,NOTAS,ID
+PEI,1,A,8:00,3-11-26,Lenguaje Corporal,"ARRIETA, EUGENIA",,iefe_pei_1a_20261103
+PEI,1,A,8:00,5-11-26,Pedagogía,"SENESTRARI, NESTOR",,iefe_pei_1a_20261105
+PEI,1,A,8:00,6-11-26,Ed. Artística Plástica,"LOYOLA, MARIA LUZ",,iefe_pei_1a_20261106
+PEI,1,A,8:00,9-11-26,Problemática Socioantropología de la Educación,"GIACOBE, CLAUDIA","Suplente: Reches, Ana",iefe_pei_1a_20261109
+PEI,1,A,8:00,10-11-26,Argentina en el Mundo Contemporáneo,"PONS, CRISTINA",,iefe_pei_1a_20261110
+PEI,1,A,8:00,11-11-26,Psicología y Educación,"SILVA, VIVIANA",,iefe_pei_1a_20261111
+PEI,1,A,8:00,13-11-26,"Oralidad, Lectura y Escritura","BARONE, DAIANA",,iefe_pei_1a_20261113
+PEI,1,A,8:00,16-11-26,Ed. Inicial: Jardín Maternal,VACANTE,,iefe_pei_1a_20261116
+PEI,1,A,8:00,17-11-26,Seminario Alf. en Leng. Inglesa,"BOSAZ, GRACIELA",,iefe_pei_1a_20261117
+PEI,1,A,8:00,18-11-26,Ed. Artística Música,"ALDERETE, HECTOR",,iefe_pei_1a_20261118
+PEI,1,A,8:00,19-11-26,Leng. Digital y Audiovisual,"SALDE, VERONICA","Suplente: Flores Mutigliengo, Jennifer",iefe_pei_1a_20261119
+PEI,1,A,8:00,24-11-26,Práctica Docente I,"MAGNAN, INES",,iefe_pei_1a_20261124
+PEI,1,B,18:30,2-11-26,Seminario: Inglés,"VOLMARO, ANA",,iefe_pei_1b_20261102
+PEI,1,B,18:30,4-11-26,"Oralidad, Lectura y Escritura","GARCIA ARMESTO, ANA",Licencia,iefe_pei_1b_20261104
+PEI,1,B,18:30,6-11-26,Argentina en el Mundo Contemporáneo,"MAIER, LEANDRO",,iefe_pei_1b_20261106
+PEI,1,B,18:30,9-11-26,Leng. Digital y Audiovisual,"GAGLIARDI, PABLO",,iefe_pei_1b_20261109
+PEI,1,B,18:30,10-11-26,Lenguaje Corporal,"MARTIN, ROXANA","Suplente: Ramos, Santiago",iefe_pei_1b_20261110
+PEI,1,B,18:30,12-11-26,Ed. Inicial: Jardín Maternal,"COMBA, MA. VIRGINIA",,iefe_pei_1b_20261112
+PEI,1,B,18:30,13-11-26,Pedagogía,"PRADO, MARIELA",,iefe_pei_1b_20261113
+PEI,1,B,18:30,18-11-26,Psicología y Educación,VACANTE,,iefe_pei_1b_20261118
+PEI,1,B,18:30,19-11-26,Ed. Artística Música,"RAMOS RUIZ, RODRIGO",,iefe_pei_1b_20261119
+PEI,1,B,18:30,24-11-26,Práctica Docente I,VACANTE,"Suplente: Soto, Eliana",iefe_pei_1b_20261124
+PEI,1,B,18:30,25-11-26,Problemática Socioantropología de la Educación,"MONTENEGRO, MARCELA",,iefe_pei_1b_20261125
+PEI,1,C,18:30,2-11-26,Pedagogía,"PAEZ, MONICA",,iefe_pei_1c_20261102
+PEI,1,C,18:30,3-11-26,Lenguaje Corporal,"MARTIN, ROXANA","Suplente: Chavez, Maria Luz",iefe_pei_1c_20261103
+PEI,1,C,18:30,4-11-26,Leng. Digital y Audiovisual,"GAGLIARDI, PABLO",,iefe_pei_1c_20261104
+PEI,1,C,18:30,10-11-26,Ed. Inicial: Jardín Maternal,"MACCARIO, GISELLE",,iefe_pei_1c_20261110
+PEI,1,C,18:30,12-11-26,Problemática Socioantropología de la Educación,"ROMERO, MARA",,iefe_pei_1c_20261112
+PEI,1,C,18:30,13-11-26,Argentina en el Mundo Contemporáneo,"MAIER, LEANDRO",,iefe_pei_1c_20261113
+PEI,1,C,18:30,18-11-26,Psicología y Educación,A CONFIRMAR,,iefe_pei_1c_20261118
+PEI,1,C,18:30,19-11-26,"Oralidad, Lectura y Escritura","BERTINI, ADRIAN",,iefe_pei_1c_20261119
+PEI,1,C,18:30,20-11-26,Ed. Artística Música,SANCHEZ G. TOMÁS,,iefe_pei_1c_20261120
+PEI,1,C,18:30,25-11-26,Práctica Docente I,"GARLATI, MA. JOSE",,iefe_pei_1c_20261125
+PEI,1,C,18:30,26-11-26,Seminario Alf. en Leng. Inglesa,"VOLMARO, ANA",,iefe_pei_1c_20261126
+PEI,1,D,18:30,2-11-26,Seminario: Inglés,"BOSAZ, GRACIELA",,iefe_pei_1d_20261102
+PEI,1,D,18:30,3-11-26,Lenguaje Corporal,"ARRIETA, EUGENIA",,iefe_pei_1d_20261103
+PEI,1,D,18:30,5-11-26,Problemática Socioantropología de la Educación,"CHARAFEDIN J, GRACIANA",,iefe_pei_1d_20261105
+PEI,1,D,18:30,6-11-26,Ed. Artística Música,"RAMOS RUIZ, RODRIGO",,iefe_pei_1d_20261106
+PEI,1,D,18:30,9-11-26,Pedagogía,"BIANCHI, MA. EUGENIA","Suplente: Senestrari, Nestor",iefe_pei_1d_20261109
+PEI,1,D,18:30,11-11-26,Lenguaje Digital y Audiovisual,"SAIZ, CAROLINA",,iefe_pei_1d_20261111
+PEI,1,D,18:30,13-11-26,Psicología y Educación,"QUINTANILLA, LUCIA",,iefe_pei_1d_20261113
+PEI,1,D,18:30,16-11-26,"Oralidad, Lectura y Escritura","GARCIA ARMESTO, ANA",,iefe_pei_1d_20261116
+PEI,1,D,18:30,17-11-26,Argentina en el Mundo Contemporáneo,"PONS, CRISTINA",,iefe_pei_1d_20261117
+PEI,1,D,18:30,19-11-26,Ed. Inicial: Jardín Maternal,"VILLALBA, LAURA",,iefe_pei_1d_20261119
+PEI,1,D,18:30,25-11-26,Práctica Docente I,"GARLATI, MA. JOSE","Suplente: Rojas, Paola",iefe_pei_1d_20261125
+PEI,2,A,8:00,2-11-26,Filosofía y Educación,"CUBAS, LAURA",,iefe_pei_2a_20261102
+PEI,2,A,8:00,3-11-26,Lengua y su Didáctica - Alfabetización Inicial,"GARCIA ARMESTO, ANA",,iefe_pei_2a_20261103
+PEI,2,A,8:00,5-11-26,Ciencias Naturales y su Didáctica I,"BRACAMONTE, MARIA",,iefe_pei_2a_20261105
+PEI,2,A,8:00,9-11-26,Suj. de la Educación y Conv. Esc.,"MAGNAN, INES",,iefe_pei_2a_20261109
+PEI,2,A,8:00,10-11-26,T.I.C. y la Enseñanza en el N.I.,"SALDE, VERONICA",,iefe_pei_2a_20261110
+PEI,2,A,8:00,11-11-26,Desarrollo del Pensamiento Matemático,"GIMENEZ, ANIBAL DARÍO",,iefe_pei_2a_20261111
+PEI,2,A,8:00,13-11-26,Diseño y Const. de M.D.,"LOYOLA, MARIA LUZ",,iefe_pei_2a_20261113
+PEI,2,A,8:00,18-11-26,Didáctica General,"HERNÁNDEZ, LAURA",,iefe_pei_2a_20261118
+PEI,2,A,8:00,24-11-26,Práctica Docente II,"AGUERO, ANDREA",desde 12:40 a 15:25; incluye pre-hora; total 4 horas,iefe_pei_2a_20261124
+PEI,2,B,18:30,2-11-26,Diseño y Const. de M.D.,"MARTINEZ, IVANA",,iefe_pei_2b_20261102
+PEI,2,B,18:30,3-11-26,Cs. Nat. y su Didác.,"GROSSO, NATALIA",,iefe_pei_2b_20261103
+PEI,2,B,18:30,5-11-26,Suj. de la Educación y Conv. Esc.,"QUEVEDO, VERONICA",,iefe_pei_2b_20261105
+PEI,2,B,18:30,6-11-26,Filosofía y Educación,"ROVELLI, JOSE",,iefe_pei_2b_20261106
+PEI,2,B,18:30,10-11-26,Educación Artística: Plástica,"DURAN, MA. ISABEL",Pre-Jubilatoria,iefe_pei_2b_20261110
+PEI,2,B,18:30,11-11-26,Desarrollo del Pensamiento Matemático,"GIMENEZ, ANIBAL DARÍO",,iefe_pei_2b_20261111
+PEI,2,B,18:30,13-11-26,Lengua y su Didáctica - Alfabetización Inicial,"RUBIRA, LETICIA",,iefe_pei_2b_20261113
+PEI,2,B,18:30,17-11-26,T.I.C. y la Enseñanza en el N.I.,"SALDE, VERONICA",,iefe_pei_2b_20261117
+PEI,2,B,18:30,19-11-26,Didáctica General,"HERNÁNDEZ, LAURA",,iefe_pei_2b_20261119
+PEI,2,C,18:30,2-11-26,Lengua y su Didáctica - Alfabetización Inicial,"VEDIA, CELESTE",,iefe_pei_2c_20261102
+PEI,2,C,18:30,3-11-26,Cs. Nat. y su Didác.,"BRACAMONTE, MARIA",,iefe_pei_2c_20261103
+PEI,2,C,18:30,11-11-26,Suj. de la Educación y Conv. Esc.,"SILVA, VIVIANA",,iefe_pei_2c_20261111
+PEI,2,C,18:30,12-11-26,Diseño y Const. de M.D.,"MARTINEZ, IVANA",,iefe_pei_2c_20261112
+PEI,2,C,18:30,13-11-26,Desarrollo del Pensamiento Matemático,"GIMENEZ, ANIBAL DARÍO",,iefe_pei_2c_20261113
+PEI,2,C,18:30,16-11-26,Práctica Docente II,"MIRANDA, JENNIFER",,iefe_pei_2c_20261116
+PEI,2,C,18:30,18-11-26,Didáctica General,"FARIÑA, ANDREA",,iefe_pei_2c_20261118
+PEI,2,C,18:30,19-11-26,Filosofía y Educación,"CUBAS, LAURA",,iefe_pei_2c_20261119
+PEI,2,C,18:30,20-11-26,Educación Artística: Plástica,"RICCI, SARA",,iefe_pei_2c_20261120
+PEI,2,C,18:30,24-11-26,T.I.C. y la Enseñanza en el N.I.,"SALDE, VERONICA",,iefe_pei_2c_20261124
+PEI,2,D,18:30,2-11-26,Cs. Nat. y su Didác.,"EMANUEL, PABLO",,iefe_pei_2d_20261102
+PEI,2,D,18:30,5-11-26,Diseño y Const. de M.D.,"MARTINEZ, IVANA",,iefe_pei_2d_20261105
+PEI,2,D,18:30,6-11-26,Educación Artística: Plástica,"RICCI, SARA",,iefe_pei_2d_20261106
+PEI,2,D,18:30,10-11-26,Filosofía y Educación,"NAVARRO, SERGIO",CM,iefe_pei_2d_20261110
+PEI,2,D,18:30,11-11-26,Didáctica General,"BIANCHI, MA. EUGENIA","Suplente: Maccario, Giselle",iefe_pei_2d_20261111
+PEI,2,D,18:30,13-11-26,Desarrollo del Pensamiento Matemático,"GIMENEZ, ANIBAL DARÍO",,iefe_pei_2d_20261113
+PEI,2,D,18:30,17-11-26,Suj. de la Educación y Conv. Esc.,"SILVA, VIVIANA",,iefe_pei_2d_20261117
+PEI,2,D,18:30,18-11-26,Lengua y su Didáctica - Alfabetización Inicial,"RIOS, SOLEDAD",,iefe_pei_2d_20261118
+PEI,2,D,18:30,24-11-26,Práctica Docente II,"COMBA, MA. VIRGINIA",,iefe_pei_2d_20261124
+PEI,2,D,18:30,27-11-26,T.I.C. y la Enseñanza en el N.I.,"SALDE, VERONICA",,iefe_pei_2d_20261127
+PEI,3,A,8:00,2-11-26,Ciencias Sociales y su Didáctica II,"MADUSSI, ROMINA",,iefe_pei_3a_20261102
+PEI,3,A,8:00,3-11-26,Educación Física en J.M. y J.I.,"ARRIETA, EUGENIA",,iefe_pei_3a_20261103
+PEI,3,A,8:00,4-11-26,Matemática y su Didáctica II,"GOYENECHE, SILVIA",,iefe_pei_3a_20261104
+PEI,3,A,8:00,9-11-26,Seminario I,"SILVA, VIVIANA",,iefe_pei_3a_20261109
+PEI,3,A,8:00,11-11-26,Historia y Política de la Educación Argentina,"BASSI OVIEDO, LUCIA",,iefe_pei_3a_20261111
+PEI,3,A,8:00,17-11-26,Literatura en el Nivel Inicial,"GARCIA ARMESTO, ANA",,iefe_pei_3a_20261117
+PEI,3,A,8:00,20-11-26,Ciencias Naturales,"EMANUEL, PABLO",,iefe_pei_3a_20261120
+PEI,3,A,8:00,24-11-26,Práctica Docente III,"GIL, FERNANDA",,iefe_pei_3a_20261124
+PEI,3,B,18:30,2-11-26,Historia y Política de la Educación Argentina,"ARTUNDUAGA, GUSTAVO",,iefe_pei_3b_20261102
+PEI,3,B,18:30,3-11-26,Matemática y su Didáctica II,"GIMENEZ, ANIBAL DARÍO",,iefe_pei_3b_20261103
+PEI,3,B,18:30,4-11-26,Educación Física en J.M. y J.I.,"LUNA, NATALIA",,iefe_pei_3b_20261104
+PEI,3,B,18:30,5-11-26,Matemática y su Didáctica II,"GIMENEZ, ANIBAL DARÍO",,iefe_pei_3b_20261105
+PEI,3,B,18:30,10-11-26,Ciencias Naturales,SIN PROFESOR,,iefe_pei_3b_20261110
+PEI,3,B,18:30,13-11-26,Ciencias Sociales y su Didáctica II,"DRUETTA, MATIAS",,iefe_pei_3b_20261113
+PEI,3,B,18:30,17-11-26,Seminario I,"MACCARIO, GISELLE",,iefe_pei_3b_20261117
+PEI,3,B,18:30,19-11-26,Literatura en el Nivel Inicial,"SALGUERO, FERNANDA",,iefe_pei_3b_20261119
+PEI,3,B,18:30,24-11-26,Práctica Docente III,"GAGLIARDI, PABLO",,iefe_pei_3b_20261124
+PEI,3,C,18:30,2-11-26,Ciencias Sociales y su Didáctica II,"MAIER, LEANDRO",,iefe_pei_3c_20261102
+PEI,3,C,18:30,4-11-26,Ciencias Naturales,"GROSSO, NATALIA",,iefe_pei_3c_20261104
+PEI,3,C,18:30,6-11-26,Educación Física en J.M. y J.I.,"LESCANO, ROBERTO",,iefe_pei_3c_20261106
+PEI,3,C,18:30,9-11-26,Seminario I,"COMBA, MA. VIRGINIA",,iefe_pei_3c_20261109
+PEI,3,C,18:30,12-11-26,Literatura en el Nivel Inicial,"RIOS, SOLEDAD",,iefe_pei_3c_20261112
+PEI,3,C,18:30,18-11-26,Historia y Política de la Educación Argentina,"BIANCHI, MA. EUGENIA","Suplente: Artunduaga, Gustavo",iefe_pei_3c_20261118
+PEI,3,C,18:30,24-11-26,Práctica Docente III,"GIL, FERNANDA",,iefe_pei_3c_20261124
+PEI,3,C,18:30,26-11-26,Matemática y su Didáctica II,"DEMARCHI, GUSTAVO",,iefe_pei_3c_20261126
+PEI,3,D,18:30,2-11-26,Educación Física en J.M. y J.I.,"LESCANO, ROBERTO",,iefe_pei_3d_20261102
+PEI,3,D,18:30,4-11-26,Ciencias Sociales y su Didáctica II,"VARGAS, MARISA",,iefe_pei_3d_20261104
+PEI,3,D,18:30,10-11-26,Historia y Política de la Educación Argentina,"BASSI OVIEDO, LUCIA",,iefe_pei_3d_20261110
+PEI,3,D,18:30,12-11-26,Literatura en el Nivel Inicial,"RIOS, SOLEDAD",,iefe_pei_3d_20261112
+PEI,3,D,18:30,17-11-26,Matemática y su Didáctica II,"GIMENEZ, ANIBAL DARÍO",,iefe_pei_3d_20261117
+PEI,3,D,18:30,18-11-26,Seminario I,"SILVA, VIVIANA",,iefe_pei_3d_20261118
+PEI,3,D,18:30,26-11-26,Práctica Docente III,"RODRIGUEZ, SILVANA",,iefe_pei_3d_20261126
+PEI,3,D,18:30,27-11-26,Ciencias Naturales,"VILLANUEVA, ADRIANA",Lic. Médica largo tratamiento,iefe_pei_3d_20261127
+PEI,4,A,8:00,2-11-26,Ed. Sexual Integral,"APARICIO, DELFINA",,iefe_pei_4a_20261102
+PEI,4,A,8:00,3-11-26,Prob. y Desafíos del N.I.: J.M. y J.I.,"GIL, FERNANDA",,iefe_pei_4a_20261103
+PEI,4,A,8:00,6-11-26,Seminario II,"MACCARIO, GISELLE",,iefe_pei_4a_20261106
+PEI,4,A,8:00,9-11-26,Trabajo de Campo,"NAVARRO, SERGIO",,iefe_pei_4a_20261109
+PEI,4,A,8:00,10-11-26,Ética y Construcción de Ciudadanía,"ANGUEIRA, ALFONSINA",,iefe_pei_4a_20261110
+PEI,4,A,8:00,19-11-26,Educación Artística: Teatro,"MARTINEZ, IVANA",,iefe_pei_4a_20261119
+PEI,4,A,8:00,25-11-26,Práctica IV y Residencia,"GIL, FERNANDA",,iefe_pei_4a_20261125
+PEI,4,B,18:30,2-11-26,Educación Artística: Teatro,"BARBARIGA, PAULO",,iefe_pei_4b_20261102
+PEI,4,B,18:30,3-11-26,Trabajo de Campo,"RUIZ, MA. DEL PILAR",,iefe_pei_4b_20261103
+PEI,4,B,18:30,11-11-26,Prob. y Desafíos del N.I.: J.M. y J.I.,"GIL, FERNANDA",,iefe_pei_4b_20261111
+PEI,4,B,18:30,18-11-26,Ética y Construcción de Ciudadanía,"ANGUEIRA, ALFONSINA",,iefe_pei_4b_20261118
+PEI,4,B,18:30,19-11-26,Ed. Sexual Integral,"GALLAFENT, MARIANA",,iefe_pei_4b_20261119
+PEI,4,B,18:30,24-11-26,Seminario II,"GARCIA, JESSICA",,iefe_pei_4b_20261124
+PEI,4,B,18:30,27-11-26,Práctica Docente IV Atenéos,RODRIGUEZ - GALLARDO,[Pase. Comis],iefe_pei_4b_20261127
+PEI,4,C,18:30,3-11-26,Ética y Construcción de Ciudadanía,"ANGUEIRA, ALFONSINA",,iefe_pei_4c_20261103
+PEI,4,C,18:30,6-11-26,Ed. Sexual Integral,"APARICIO, DELFINA",,iefe_pei_4c_20261106
+PEI,4,C,18:30,9-11-26,Trabajo de Campo,"RUIZ, MA. DEL PILAR",,iefe_pei_4c_20261109
+PEI,4,C,18:30,10-11-26,Educación Artística: Teatro,"MARTINEZ, IVANA",,iefe_pei_4c_20261110
+PEI,4,C,18:30,16-11-26,Prob. y Desafíos del N.I.: J.M. y J.I.,"GIL, FERNANDA",,iefe_pei_4c_20261116
+PEI,4,C,18:30,18-11-26,Seminario II,"MARTINEZ, MA. NOEL",,iefe_pei_4c_20261118
+PEI,4,C,18:30,27-11-26,Práctica Docente IV Atenéos,"BALLESTEROS, MARIA JOSE",,iefe_pei_4c_20261127
+PEP,1,A,8:00,2-11-26,Argentina en el Mundo Contemporáneo,"CANDIA, MIGUEL",,iefe_pep_1a_20261102
+PEP,1,A,8:00,5-11-26,Desarrollo del Pensamiento Matemático,"REINOSO, OSCAR",,iefe_pep_1a_20261105
+PEP,1,A,8:00,9-11-26,Lenguaje Corporal,"ARRIETA, EUGENIA",,iefe_pep_1a_20261109
+PEP,1,A,8:00,10-11-26,Problemática Socioantropología de la Educación,"BARRIONUEVO, LAURA",,iefe_pep_1a_20261110
+PEP,1,A,8:00,11-11-26,Alfabetización en Lengua Inglesa,"BOSAZ, GRACIELA",,iefe_pep_1a_20261111
+PEP,1,A,8:00,13-11-26,"Oralidad, Lectura y Escritura","VEDIA, CELESTE",,iefe_pep_1a_20261113
+PEP,1,A,8:00,16-11-26,Práctica Docente I,"VILCHES, VALENTINA",,iefe_pep_1a_20261116
+PEP,1,A,8:00,17-11-26,Psicología y Educación,"MAGNAN, INES",,iefe_pep_1a_20261117
+PEP,1,A,8:00,19-11-26,Lenguaje Digital y Audiovisual,"GAGLIARDI, PABLO",,iefe_pep_1a_20261119
+PEP,1,A,8:00,27-11-26,Pedagogía,"NAVARRO, SERGIO",,iefe_pep_1a_20261127
+PEP,1,B,18:30,3-11-26,Lenguaje Corporal,"LESCANO, ROBERTO",,iefe_pep_1b_20261103
+PEP,1,B,18:30,6-11-26,"Oralidad, Lectura y Escritura","VEDIA, CELESTE",,iefe_pep_1b_20261106
+PEP,1,B,18:30,10-11-26,Psicología y Educación,"QUINTANILLA, LUCIA",,iefe_pep_1b_20261110
+PEP,1,B,18:30,12-11-26,Argentina en el Mundo Contemporáneo,"RAMOS, MA. VIRGINIA",,iefe_pep_1b_20261112
+PEP,1,B,18:30,13-11-26,Lenguaje Digital y Audiovisual,"FLORES M, JENNIFER",,iefe_pep_1b_20261113
+PEP,1,B,18:30,16-11-26,Desarrollo del Pensamiento Matemático,"GIMENEZ, ANIBAL DARÍO",,iefe_pep_1b_20261116
+PEP,1,B,18:30,18-11-26,Problemática Socioantropología de la Educación,"RECHES, ANA",,iefe_pep_1b_20261118
+PEP,1,B,18:30,24-11-26,Pedagogía,"NAVARRO, SERGIO",,iefe_pep_1b_20261124
+PEP,1,B,18:30,25-11-26,Práctica Docente I,"COMBA, MA. VIRGINIA",,iefe_pep_1b_20261125
+PEP,1,B,18:30,27-11-26,Alfabetización en Lengua Inglesa,"ASINARI, MA. CECILIA",,iefe_pep_1b_20261127
+PEP,1,C,18:30,2-11-26,Psicología y Educación,"PAGANINI, MATEO",,iefe_pep_1c_20261102
+PEP,1,C,18:30,6-11-26,Argentina en el Mundo Contemporáneo,"RAMOS, MA. VIRGINIA",,iefe_pep_1c_20261106
+PEP,1,C,18:30,10-11-26,Pedagogía,"PRADO, MARIELA",,iefe_pep_1c_20261110
+PEP,1,C,18:30,11-11-26,Desarrollo del Pensamiento Matemático,"FERREYRA, MICAELA",,iefe_pep_1c_20261111
+PEP,1,C,18:30,13-11-26,Problemática Socioantropología de la Educación,"ARRIETA, ROCIO",,iefe_pep_1c_20261113
+PEP,1,C,18:30,16-11-26,Lenguaje Digital y Audiovisual,"LAZZINI, JULIETA",,iefe_pep_1c_20261116
+PEP,1,C,18:30,18-11-26,"Oralidad, Lectura y Escritura","GARCIA ARMESTO, ANA",,iefe_pep_1c_20261118
+PEP,1,C,18:30,24-11-26,Práctica Docente I,"QUEVEDO, VERONICA",,iefe_pep_1c_20261124
+PEP,1,C,18:30,26-11-26,Alfabetización en Lengua Inglesa,"BOSAZ, GRACIELA",,iefe_pep_1c_20261126
+PEP,1,C,18:30,27-11-26,Lenguaje Corporal,VACANTE,,iefe_pep_1c_20261127
+PEP,2,A,8:00,2-11-26,Lenguaje Artístico Expresivo,NOELIA MONTOYA,,iefe_pep_2a_20261102
+PEP,2,A,8:00,3-11-26,Ciencias Sociales y su Didáctica I,"MAIER, LEANDRO",,iefe_pep_2a_20261103
+PEP,2,A,8:00,6-11-26,Sujetos de la Educación y la Convivencia Escolar,"SILVA, VIVIANA",,iefe_pep_2a_20261106
+PEP,2,A,8:00,9-11-26,Lengua y su Didáctica - Alfabetización Inicial,"VEDIA, CELESTE",,iefe_pep_2a_20261109
+PEP,2,A,8:00,11-11-26,Ciencias Naturales y su Didáctica I,"COUTSIERS, CARLA",,iefe_pep_2a_20261111
+PEP,2,A,8:00,12-11-26,Alfabetización en Lengua Inglesa,"VOLMARO, ANA",,iefe_pep_2a_20261112
+PEP,2,A,8:00,16-11-26,Filosofía y Educación,"FITA, TRISTAN",,iefe_pep_2a_20261116
+PEP,2,A,8:00,18-11-26,Didáctica General,"BARRIONUEVO, LAURA",,iefe_pep_2a_20261118
+PEP,2,A,8:00,26-11-26,Matemática y su Didáctica I,"GIMENEZ, ANIBAL DARÍO",,iefe_pep_2a_20261126
+PEP,2,A,8:00,27-11-26,Práctica Docente II,"SAGRISTANI, MA. DE LOS ANGELES",,iefe_pep_2a_20261127
+PEP,2,B,18:30,2-11-26,Ciencias Naturales y su Didáctica I,"TOLEDO, CAROLINA",,iefe_pep_2b_20261102
+PEP,2,B,18:30,6-11-26,Seminario I,"BOSAZ, GRACIELA",,iefe_pep_2b_20261106
+PEP,2,B,18:30,9-11-26,Sujetos de la Educación y la Convivencia Escolar,"GALLAFENT, MARIANA",,iefe_pep_2b_20261109
+PEP,2,B,18:30,10-11-26,Filosofía y Educación,"CUBAS, LAURA",,iefe_pep_2b_20261110
+PEP,2,B,18:30,12-11-26,Didáctica General,"HERNÁNDEZ, LAURA",,iefe_pep_2b_20261112
+PEP,2,B,18:30,17-11-26,Ciencias Sociales y su Didáctica I,"MAIER, LEANDRO",,iefe_pep_2b_20261117
+PEP,2,B,18:30,18-11-26,Matemática y su Didáctica I,"VILLARREAL, MARISA",,iefe_pep_2b_20261118
+PEP,2,B,18:30,25-11-26,Lengua y su Didáctica - Alfabetización Inicial,"SALGUERO, FERNANDA",,iefe_pep_2b_20261125
+PEP,2,B,18:30,26-11-26,Lenguaje Artístico Expresivo,"FELLETTI, NADIA",,iefe_pep_2b_20261126
+PEP,2,B,18:30,27-11-26,Práctica Docente II,"SAGRISTANI, MA. DE LOS ANGELES",,iefe_pep_2b_20261127
+PEP,2,C,18:30,2-11-26,Sujetos de la Educación y la Convivencia Escolar,"MAGNAN, INES",,iefe_pep_2c_20261102
+PEP,2,C,18:30,4-11-26,Lengua y su Didáctica - Alfabetización Inicial,"RIOS, SOLEDAD",,iefe_pep_2c_20261104
+PEP,2,C,18:30,12-11-26,Filosofía y Educación,"ROVELLI LÓPEZ, JOSÉ",,iefe_pep_2c_20261112
+PEP,2,C,18:30,13-11-26,Seminario I Alfabetización en Lengua Inglesa,"VOLMARO, ANA",,iefe_pep_2c_20261113
+PEP,2,C,18:30,16-11-26,Matemática y su Didáctica I,"DEMARCHI, GUSTAVO",,iefe_pep_2c_20261116
+PEP,2,C,18:30,17-11-26,Ciencias Sociales y su Didáctica I,"DRUETTA, MATIAS",,iefe_pep_2c_20261117
+PEP,2,C,18:30,19-11-26,Lenguaje Artístico Expresivo,VACANTE,,iefe_pep_2c_20261119
+PEP,2,C,18:30,24-11-26,Didáctica General,VACANTE,,iefe_pep_2c_20261124
+PEP,2,C,18:30,25-11-26,Ciencias Naturales y su Didáctica I,VACANTE,,iefe_pep_2c_20261125
+PEP,2,C,18:30,27-11-26,Práctica Docente II,"QUEVEDO, VERONICA",,iefe_pep_2c_20261127
+PEP,3,A,8:00,2-11-26,Matemática y su Didáctica II,"REINOSO, OSCAR",,iefe_pep_3a_20261102
+PEP,3,A,8:00,5-11-26,TIC y la Enseñanza en el Nivel Primario,"VAZQUEZ, MARCELA",,iefe_pep_3a_20261105
+PEP,3,A,8:00,6-11-26,Taller de Ciencias Sociales,MAIER- MARI,,iefe_pep_3a_20261106
+PEP,3,A,8:00,9-11-26,Alfabetización Inicial,"FERNANDEZ, JUAN",,iefe_pep_3a_20261109
+PEP,3,A,8:00,11-11-26,Ciencias Sociales y su Didáctica II,"MAIER, LEANDRO",,iefe_pep_3a_20261111
+PEP,3,A,8:00,12-11-26,Educación Artística Expresiva,VACANTE,,iefe_pep_3a_20261112
+PEP,3,A,8:00,13-11-26,Ciencias Naturales y su Didáctica II,"MARI, MACARENA",,iefe_pep_3a_20261113
+PEP,3,A,8:00,16-11-26,Seminario III: Inglés,"ASINARI, MA. CECILIA",,iefe_pep_3a_20261116
+PEP,3,A,8:00,17-11-26,Literatura en el Nivel Primario,"GARCIA ARMESTO, ANA",,iefe_pep_3a_20261117
+PEP,3,A,8:00,19-11-26,Historia y Política de la Educación Argentina,"DAMIANI, ANDRÉS",,iefe_pep_3a_20261119
+PEP,3,A,8:00,25-11-26,Práctica Docente III,"ASSENZA, SEBASTIÁN",,iefe_pep_3a_20261125
+PEP,3,B,18:30,2-11-26,Historia y Política de la Educación Argentina,"DE SOUSA, MATÍAS",,iefe_pep_3b_20261102
+PEP,3,B,18:30,4-11-26,Ciencias Sociales y su Didáctica II,"MONTENEGRO, MARCELA",,iefe_pep_3b_20261104
+PEP,3,B,18:30,5-11-26,Educación Artística Expresiva,"DRAGONETTI, ANA",,iefe_pep_3b_20261105
+PEP,3,B,18:30,10-11-26,Literatura en el Nivel Primario,"VEDIA, CELESTE",,iefe_pep_3b_20261110
+PEP,3,B,18:30,12-11-26,Seminario II Alfabetización en Lengua Inglesa,"BOSAZ, GRACIELA",,iefe_pep_3b_20261112
+PEP,3,B,18:30,13-11-26,Ciencias Naturales y su Didáctica II,"COUTSIERS, CARLA",,iefe_pep_3b_20261113
+PEP,3,B,18:30,16-11-26,TIC y la Enseñanza en el Nivel Primario,VACANTE,,iefe_pep_3b_20261116
+PEP,3,B,18:30,19-11-26,Matemática y su Didáctica II,"DEMARCHI, GUSTAVO",,iefe_pep_3b_20261119
+PEP,3,B,18:30,24-11-26,Alfabetización Inicial,"GARCIA ARMESTO, ANA",,iefe_pep_3b_20261124
+PEP,3,B,18:30,25-11-26,Taller de Ciencias,MONTENEGRO - COUTSIERS,,iefe_pep_3b_20261125
+PEP,3,B,18:30,27-11-26,Práctica Docente III,"CANDELERO, FERNANDO",,iefe_pep_3b_20261127
+PEP,3,C,18:30,2-11-26,Taller de Ciencias Sociales,MAIER - OTTOGALLI,,iefe_pep_3c_20261102
+PEP,3,C,18:30,5-11-26,Matemática y su Didáctica II,"REINOSO, OSCAR",,iefe_pep_3c_20261105
+PEP,3,C,18:30,6-11-26,Historia y Política de la Educación Argentina,"BASSI OVIEDO, LUCIA",,iefe_pep_3c_20261106
+PEP,3,C,18:30,9-11-26,Educación Artística Expresiva,"DRAGONETTI, ANA",,iefe_pep_3c_20261109
+PEP,3,C,18:30,10-11-26,Ciencias Naturales y su Didáctica II,"OTTOGALLI, EMILIA",,iefe_pep_3c_20261110
+PEP,3,C,18:30,12-11-26,Ciencias Sociales y su Didáctica II,"MAIER, LEANDRO",,iefe_pep_3c_20261112
+PEP,3,C,18:30,16-11-26,TIC y la Enseñanza en el Nivel Primario,VACANTE,,iefe_pep_3c_20261116
+PEP,3,C,18:30,18-11-26,Literatura en el Nivel Primario,"VEDIA, CELESTE",,iefe_pep_3c_20261118
+PEP,3,C,18:30,19-11-26,Seminario II Alfabetización en Lengua Inglesa,"BOSAZ, GRACIELA",,iefe_pep_3c_20261119
+PEP,3,C,18:30,24-11-26,Alfabetización Inicial,VACANTE,,iefe_pep_3c_20261124
+PEP,3,C,18:30,27-11-26,Práctica Docente III,"ASSENZA, SEBASTIÁN",,iefe_pep_3c_20261127
+PEP,4,A,8:00,2-11-26,Problemática y Desarrollo del Nivel Primario,"CAYO, NADIA",,iefe_pep_4a_20261102
+PEP,4,A,8:00,5-11-26,Seminario III Educación para Jóvenes y Adulto,"ARRIETA, ROCIO",,iefe_pep_4a_20261105
+PEP,4,A,8:00,10-11-26,Ética y Construcción de Ciudadanía,"ROVELLI LÓPEZ, JOSÉ",,iefe_pep_4a_20261110
+PEP,4,A,8:00,12-11-26,Trabajo de Campo,"CHEBLE, SILVIA RENE",,iefe_pep_4a_20261112
+PEP,4,A,8:00,17-11-26,Educación Física en el Nivel Primario,"LUNA MOREYRA, MA. NATALIA",,iefe_pep_4a_20261117
+PEP,4,A,8:00,24-11-26,Educación Sexual Integral,"MAZA, PAULA",,iefe_pep_4a_20261124
+PEP,4,A,8:00,25-11-26,Práctica Docente IV Atenéos,QUEVEDO; DAMIANI; GARCIA ARMESTO; CARO; BRACAMONTE,,iefe_pep_4a_20261125
+PEP,4,B,18:30,2-11-26,Educación Sexual Integral,"SILVA, VIVIANA",,iefe_pep_4b_20261102
+PEP,4,B,18:30,3-11-26,Ética y Construcción de Ciudadanía,"ANGUEIRA, ALFONSINA",,iefe_pep_4b_20261103
+PEP,4,B,18:30,10-11-26,Seminario III Educación para Jóvenes y Adulto,"ARRIETA, ROCIO",,iefe_pep_4b_20261110
+PEP,4,B,18:30,13-11-26,Trabajo de Campo,"LYSAJ, DALILA",,iefe_pep_4b_20261113
+PEP,4,B,18:30,18-11-26,Educ. Física en el Nivel Primario,"LUNA, NATALIA",,iefe_pep_4b_20261118
+PEP,4,B,18:30,26-11-26,Prob. y Des. del Nivel Primario,ROMERO R. CAROLINA,,iefe_pep_4b_20261126
+PEP,4,B,18:30,27-11-26,Práctica Docente IV Atenéos,ROMERO R. CAROLINA,,iefe_pep_4b_20261127
+PEP,4,C,18:30,3-11-26,Educación Sexual Integral,"QUINTANILLA, LUCIA",,iefe_pep_4c_20261103
+PEP,4,C,18:30,5-11-26,Problemática y Desarrollo del Nivel Primario,"DESIMONI, NANCY",,iefe_pep_4c_20261105
+PEP,4,C,18:30,10-11-26,Educación Física en el Nivel Primario,"LUNA, NATALIA",,iefe_pep_4c_20261110
+PEP,4,C,18:30,13-11-26,Trabajo de Campo,"NAVARRO, SERGIO",,iefe_pep_4c_20261113
+PEP,4,C,18:30,18-11-26,Ética y Construcción de Ciudadanía,"NAVARRO, SERGIO",,iefe_pep_4c_20261118
+PEP,4,C,18:30,19-11-26,Seminario III Educación para Jóvenes y Adulto,"NAVARRO, SERGIO",,iefe_pep_4c_20261119
+PEP,4,C,18:30,27-11-26,Práctica Docente IV Atenéos,"ORSI, HILANA",,iefe_pep_4c_20261127
