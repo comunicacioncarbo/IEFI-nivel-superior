@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { generateSchedulePdf } from "@/lib/pdf/generate-schedule-pdf";
 
 type PlanCode = "PEP" | "PEI";
 type Section = "A" | "B" | "C" | "D";
@@ -41,7 +42,9 @@ function formatDate(date: string): string {
 }
 
 function formatTime(time: string | null): string {
-  if (!time) return "";
+  if (!time) {
+    return "";
+  }
 
   return time.slice(0, 5);
 }
@@ -83,6 +86,9 @@ export default function Home() {
     useState<string | null>(null);
 
   const [search, setSearch] = useState("");
+
+  const [generatingPdf, setGeneratingPdf] =
+    useState(false);
 
   /*
    * ==========================================
@@ -136,7 +142,9 @@ export default function Home() {
           );
         }
       } catch (err) {
-        if (cancelled) return;
+        if (cancelled) {
+          return;
+        }
 
         console.error(err);
 
@@ -237,21 +245,12 @@ export default function Home() {
 
   /*
    * ==========================================
-   * BÚSQUEDA DINÁMICA
+   * BÚSQUEDA
    * ==========================================
-   *
-   * La búsqueda se ejecuta en cada cambio
-   * del input.
-   *
-   * No modifica las evaluaciones originales.
-   * No mueve el scroll.
-   * No cambia estilos de las cards.
    */
 
   const filteredEvaluations = useMemo(() => {
-    const term = search
-      .trim()
-      .toLowerCase();
+    const term = search.trim().toLowerCase();
 
     if (!term) {
       return selectedEvaluations;
@@ -310,6 +309,46 @@ export default function Home() {
 
   /*
    * ==========================================
+   * DESCARGA PDF
+   * ==========================================
+   */
+
+  async function handleDownloadPdf() {
+    if (
+      !selectedPlan ||
+      selectedYear === null ||
+      selectedSection === null ||
+      selectedEvaluations.length === 0 ||
+      generatingPdf
+    ) {
+      return;
+    }
+
+    try {
+      setGeneratingPdf(true);
+
+      await generateSchedulePdf({
+        evaluations: selectedEvaluations,
+        plan: selectedPlan,
+        year: selectedYear,
+        section: selectedSection,
+      });
+    } catch (err) {
+      console.error(
+        "Error generando PDF:",
+        err
+      );
+
+      setError(
+        "No se pudo generar el PDF."
+      );
+    } finally {
+      setGeneratingPdf(false);
+    }
+  }
+
+  /*
+   * ==========================================
    * SELECCIÓN DE PLAN
    * ==========================================
    */
@@ -329,6 +368,7 @@ export default function Home() {
     setSelectedYear(null);
     setSelectedSection(null);
     setSearch("");
+    setError(null);
 
     window.setTimeout(() => {
       document
@@ -346,7 +386,9 @@ export default function Home() {
    * ==========================================
    */
 
-  function handleYearSelect(year: number) {
+  function handleYearSelect(
+    year: number
+  ) {
     if (selectedYear === year) {
       setSelectedYear(null);
       setSelectedSection(null);
@@ -393,7 +435,9 @@ export default function Home() {
    * ==========================================
    */
 
-  function scrollToWeek(week: number) {
+  function scrollToWeek(
+    week: number
+  ) {
     document
       .querySelector(
         `[data-week="${week}"]`
@@ -568,7 +612,6 @@ export default function Home() {
                 handlePlanSelect("PEP")
               }
             >
-
               <div className="label">
                 Plan
               </div>
@@ -584,7 +627,6 @@ export default function Home() {
               <span className="arrow">
                 ↗
               </span>
-
             </button>
 
             <button
@@ -598,7 +640,6 @@ export default function Home() {
                 handlePlanSelect("PEI")
               }
             >
-
               <div className="label">
                 Plan
               </div>
@@ -614,7 +655,6 @@ export default function Home() {
               <span className="arrow">
                 ↗
               </span>
-
             </button>
 
           </div>
@@ -676,8 +716,6 @@ export default function Home() {
 
             </div>
 
-            {/* AÑOS */}
-
             <div
               id="years"
               className="year-grid"
@@ -706,8 +744,6 @@ export default function Home() {
               )}
 
             </div>
-
-            {/* SECCIONES */}
 
             {selectedYear !== null && (
               <div
@@ -774,12 +810,10 @@ export default function Home() {
               </h2>
 
               <div className="context">
-
                 {selectedPlan &&
                   selectedYear !== null &&
                   selectedSection &&
                   `${selectedPlan} · ${selectedYear}° · Sección ${selectedSection}`}
-
               </div>
 
               <div className="search-hint">
@@ -788,8 +822,6 @@ export default function Home() {
               </div>
 
             </div>
-
-            {/* BUSCADOR */}
 
             <div className="search-wrap">
 
@@ -810,13 +842,30 @@ export default function Home() {
                 }
               />
 
+              <div className="schedule-actions">
+
+                <button
+                  type="button"
+                  className="download-pdf"
+                  onClick={
+                    handleDownloadPdf
+                  }
+                  disabled={
+                    generatingPdf ||
+                    selectedEvaluations.length ===
+                      0
+                  }
+                >
+                  {generatingPdf
+                    ? "Generando PDF…"
+                    : "Descargar cronograma PDF"}
+                </button>
+
+              </div>
+
             </div>
 
           </div>
-
-          {/* ==================================
-              NAVEGACIÓN DE SEMANAS
-              ================================== */}
 
           {groupedByWeek.length > 0 && (
             <div className="weeks">
@@ -837,10 +886,6 @@ export default function Home() {
 
             </div>
           )}
-
-          {/* ==================================
-              CONTENIDO
-              ================================== */}
 
           <div className="days">
 
@@ -929,8 +974,6 @@ export default function Home() {
 
           </div>
 
-          {/* SIN RESULTADOS DE BÚSQUEDA */}
-
           {search.trim() &&
             filteredEvaluations.length === 0 && (
               <div className="context search-empty">
@@ -938,8 +981,6 @@ export default function Home() {
                 “{search}”.
               </div>
             )}
-
-          {/* SIN EVALUACIONES */}
 
           {!search.trim() &&
             selectedSection &&
@@ -991,7 +1032,7 @@ export default function Home() {
 
         <div className="footer-credit">
           Página construida por Dpto. de Comunicación
-          ENSA Carbó
+          ENSA Carbó. Toda la información fué suministrada por la Coordinación de Curso de N. Superior
         </div>
 
       </footer>

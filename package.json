@@ -14,12 +14,13 @@
     "db:test": "tsx scripts/test-neon.ts",
     "db:check": "tsx scripts/check-db.ts",
     "db:seed": "tsx scripts/seed.ts"
-    },
+  },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
     "csv-parse": "^7.0.2",
     "dotenv": "^17.4.2",
     "drizzle-orm": "^0.45.2",
+    "jspdf": "^4.2.1",
     "next": "^15.5.0",
     "pg": "^8.23.0",
     "react": "^19.1.0",
