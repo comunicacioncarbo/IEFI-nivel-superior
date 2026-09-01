@@ -1373,3 +1373,778 @@ export async function generateSchedulePdf({
 
   pdf.save(filename);
 }
+
+type GenerateTeacherSchedulePdfOptions = {
+  evaluations: Evaluation[];
+  teacher: string;
+};
+
+/*
+ * ==========================================
+ * PDF DE HORARIO DOCENTE
+ * ==========================================
+ *
+ * Mantiene exactamente la lógica visual
+ * del PDF de estudiante:
+ *
+ * - A4 vertical
+ * - 20 mm de margen
+ * - una sola página
+ * - 4 semanas
+ * - 5 días por semana
+ *
+ * La diferencia es que cada evaluación
+ * identifica explícitamente:
+ *
+ * PEP / PEI
+ * año · sección
+ * hora
+ * materia
+ * docente
+ */
+
+export async function generateTeacherSchedulePdf({
+  evaluations,
+  teacher,
+}: GenerateTeacherSchedulePdfOptions) {
+  if (
+    !evaluations ||
+    evaluations.length === 0
+  ) {
+    throw new Error(
+      "No hay evaluaciones para generar el PDF del docente."
+    );
+  }
+
+  const pdf = new jsPDF({
+    orientation: "portrait",
+    unit: "mm",
+    format: "a4",
+    compress: true,
+  });
+
+  const logo =
+    await loadLogo();
+
+  /*
+   * ==========================================
+   * ENCABEZADO
+   * ==========================================
+   */
+
+  let y = MARGIN;
+
+  if (logo) {
+    try {
+      pdf.addImage(
+        logo,
+        "PNG",
+        MARGIN,
+        y,
+        12,
+        14
+      );
+    } catch {
+      // Continuamos sin logo.
+    }
+  }
+
+  const textX = logo
+    ? MARGIN + 17
+    : MARGIN;
+
+  pdf.setFont(
+    "helvetica",
+    "bold"
+  );
+
+  pdf.setFontSize(8.5);
+
+  pdf.setTextColor(
+    ...COLORS.navy
+  );
+
+  pdf.text(
+    "ESCUELA NORMAL SUPERIOR",
+    textX,
+    y + 4.5
+  );
+
+  pdf.text(
+    "DR. ALEJANDRO CARBÓ",
+    textX,
+    y + 9
+  );
+
+  pdf.setFont(
+    "helvetica",
+    "normal"
+  );
+
+  pdf.setFontSize(6.5);
+
+  pdf.setTextColor(
+    ...COLORS.muted
+  );
+
+  pdf.text(
+    "Nivel Superior · Córdoba",
+    textX,
+    y + 13.5
+  );
+
+  /*
+   * Información del docente
+   */
+
+  pdf.setFont(
+    "helvetica",
+    "bold"
+  );
+
+  pdf.setFontSize(8);
+
+  pdf.setTextColor(
+    ...COLORS.navy
+  );
+
+  pdf.text(
+    "HORARIO DOCENTE · IEFI 2026",
+    PAGE_WIDTH - MARGIN,
+    y + 5,
+    {
+      align: "right",
+    }
+  );
+
+  pdf.setFont(
+    "helvetica",
+    "normal"
+  );
+
+  pdf.setFontSize(6.5);
+
+  pdf.setTextColor(
+    ...COLORS.muted
+  );
+
+  pdf.text(
+    teacher,
+    PAGE_WIDTH - MARGIN,
+    y + 10,
+    {
+      align: "right",
+    }
+  );
+
+  pdf.text(
+    "PEP · PEI · Noviembre 2026",
+    PAGE_WIDTH - MARGIN,
+    y + 14,
+    {
+      align: "right",
+    }
+  );
+
+  y += 19;
+
+  pdf.setDrawColor(
+    ...COLORS.blue
+  );
+
+  pdf.setLineWidth(0.4);
+
+  pdf.line(
+    MARGIN,
+    y,
+    PAGE_WIDTH - MARGIN,
+    y
+  );
+
+  y += 4;
+
+  /*
+   * ==========================================
+   * CONFIGURACIÓN DEL CALENDARIO
+   * ==========================================
+   */
+
+  const weekHeaderHeight = 6;
+
+  const dayHeaderHeight = 9;
+
+  const weekGap = 2.5;
+
+  const columnGap = 1;
+
+  const calendarBottom =
+    PAGE_HEIGHT - MARGIN - 8;
+
+  const availableCalendarHeight =
+    calendarBottom - y;
+
+  const totalWeekGaps =
+    weekGap * 3;
+
+  const totalWeekHeaders =
+    weekHeaderHeight * 4;
+
+  const totalDayHeaders =
+    dayHeaderHeight * 4;
+
+  const availableForDayColumns =
+    availableCalendarHeight -
+    totalWeekGaps -
+    totalWeekHeaders -
+    totalDayHeaders;
+
+  const weekContentHeight =
+    Math.max(
+      availableForDayColumns / 4,
+      20
+    );
+
+  const columnWidth =
+    (CONTENT_WIDTH -
+      columnGap * 4) /
+    5;
+
+  /*
+   * ==========================================
+   * LAS 4 SEMANAS
+   * ==========================================
+   */
+
+  const weeks = [
+    1,
+    2,
+    3,
+    4,
+  ];
+
+  for (
+    let weekIndex = 0;
+    weekIndex < weeks.length;
+    weekIndex++
+  ) {
+    const week =
+      weeks[weekIndex];
+
+    if (weekIndex > 0) {
+      y += weekGap;
+    }
+
+    /*
+     * Encabezado de semana
+     */
+
+    y =
+      drawWeekHeader(
+        pdf,
+        week,
+        y,
+        weekHeaderHeight
+      );
+
+    y += 1;
+
+    /*
+     * Fechas lunes-viernes
+     */
+
+    const monday =
+      getMondayForWeek(week);
+
+    const dates: string[] = [];
+
+    for (
+      let day = 0;
+      day < 5;
+      day++
+    ) {
+      const date =
+        new Date(monday);
+
+      date.setDate(
+        monday.getDate() + day
+      );
+
+      dates.push(
+        dateToString(date)
+      );
+    }
+
+    /*
+     * Encabezados de días
+     */
+
+    y =
+      drawDayHeaders(
+        pdf,
+        dates,
+        y,
+        columnWidth,
+        columnGap,
+        dayHeaderHeight
+      );
+
+    y += 1;
+
+    /*
+     * ========================================
+     * EVALUACIONES POR DÍA
+     * ========================================
+     */
+
+    const dayEvaluations =
+      dates.map(
+        (date) =>
+          evaluations
+            .filter(
+              (evaluation) =>
+                evaluation.date ===
+                date
+            )
+            .sort(
+              (a, b) => {
+                const timeCompare =
+                  (
+                    a.time ?? ""
+                  ).localeCompare(
+                    b.time ?? ""
+                  );
+
+                if (
+                  timeCompare !== 0
+                ) {
+                  return timeCompare;
+                }
+
+                /*
+                 * Si coinciden hora,
+                 * mostramos PEP antes de PEI.
+                 */
+
+                if (
+                  a.plan !== b.plan
+                ) {
+                  return a.plan ===
+                    "PEP"
+                    ? -1
+                    : 1;
+                }
+
+                return a.subject.localeCompare(
+                  b.subject,
+                  "es",
+                  {
+                    sensitivity:
+                      "base",
+                  }
+                );
+              }
+            )
+      );
+
+    /*
+     * ========================================
+     * COLUMNAS
+     * ========================================
+     */
+
+    for (
+      let day = 0;
+      day < 5;
+      day++
+    ) {
+      const x =
+        MARGIN +
+        day *
+          (columnWidth +
+            columnGap);
+
+      /*
+       * Fondo de columna
+       */
+
+      pdf.setFillColor(
+        252,
+        252,
+        252
+      );
+
+      pdf.setDrawColor(
+        ...COLORS.border
+      );
+
+      pdf.setLineWidth(0.2);
+
+      pdf.roundedRect(
+        x,
+        y,
+        columnWidth,
+        weekContentHeight,
+        1,
+        1,
+        "FD"
+      );
+
+      /*
+       * Fecha
+       */
+
+      pdf.setFont(
+        "helvetica",
+        "normal"
+      );
+
+      pdf.setFontSize(5);
+
+      pdf.setTextColor(
+        ...COLORS.muted
+      );
+
+      pdf.text(
+        capitalize(
+          formatLongDate(
+            dates[day]
+          )
+        ),
+        x + columnWidth / 2,
+        y + 4.5,
+        {
+          align: "center",
+        }
+      );
+
+      let cardY = y + 7;
+
+      const currentDayEvaluations =
+        dayEvaluations[day];
+
+      /*
+       * Sin evaluaciones
+       */
+
+      if (
+        currentDayEvaluations
+          .length === 0
+      ) {
+        pdf.setFont(
+          "helvetica",
+          "normal"
+        );
+
+        pdf.setFontSize(5.2);
+
+        pdf.setTextColor(
+          ...COLORS.muted
+        );
+
+        pdf.text(
+          "Sin evaluaciones",
+          x +
+            columnWidth / 2,
+          y + 13,
+          {
+            align: "center",
+          }
+        );
+
+        continue;
+      }
+
+      /*
+       * Evaluaciones del día
+       */
+
+      for (
+        const evaluation of
+          currentDayEvaluations
+      ) {
+        const padding = 2;
+
+        const subject =
+          evaluation.subject?.trim() ||
+          "Espacio curricular";
+
+        const teacherName =
+          evaluation.teacher?.trim() ||
+          teacher;
+
+        const time =
+          formatTime(
+            evaluation.time
+          );
+
+        const plan =
+          evaluation.plan;
+
+        const yearSection =
+          `${evaluation.year}° · ${evaluation.section}`;
+
+        /*
+         * Calcular líneas
+         */
+
+        pdf.setFont(
+          "helvetica",
+          "bold"
+        );
+
+        pdf.setFontSize(6);
+
+        const subjectLines =
+          pdf.splitTextToSize(
+            subject,
+            columnWidth -
+              padding * 2
+          );
+
+        pdf.setFont(
+          "helvetica",
+          "normal"
+        );
+
+        pdf.setFontSize(5);
+
+        const teacherLines =
+          pdf.splitTextToSize(
+            teacherName,
+            columnWidth -
+              padding * 2
+          );
+
+        /*
+         * Altura compacta
+         */
+
+        const cardHeight =
+          Math.max(
+            15,
+            2.5 +
+              3.5 +
+              3 +
+              subjectLines.length *
+                3 +
+              2.5 +
+              teacherLines.length *
+                2.5 +
+              3
+          );
+
+        /*
+         * Card
+         */
+
+        pdf.setFillColor(
+          ...COLORS.veryLightBlue
+        );
+
+        pdf.setDrawColor(
+          ...COLORS.border
+        );
+
+        pdf.setLineWidth(0.2);
+
+        pdf.roundedRect(
+          x + 1.2,
+          cardY,
+          columnWidth -
+            2.4,
+          cardHeight,
+          1,
+          1,
+          "FD"
+        );
+
+        let textY =
+          cardY + 5;
+
+        /*
+         * Plan + año/sección
+         */
+
+        pdf.setFont(
+          "helvetica",
+          "bold"
+        );
+
+        pdf.setFontSize(5.2);
+
+        pdf.setTextColor(
+          ...COLORS.blue
+        );
+
+        pdf.text(
+          `${plan} · ${yearSection}`,
+          x + padding + 1.2,
+          textY
+        );
+
+        /*
+         * Hora
+         */
+
+        if (time) {
+          pdf.setFont(
+            "helvetica",
+            "bold"
+          );
+
+          pdf.setFontSize(5.3);
+
+          pdf.setTextColor(
+            ...COLORS.navy
+          );
+
+          pdf.text(
+            `${time} hs`,
+            x +
+              columnWidth -
+              padding -
+              1.2,
+            textY,
+            {
+              align: "right",
+            }
+          );
+        }
+
+        textY += 3.5;
+
+        /*
+         * Materia
+         */
+
+        pdf.setFont(
+          "helvetica",
+          "bold"
+        );
+
+        pdf.setFontSize(6);
+
+        pdf.setTextColor(
+          ...COLORS.navy
+        );
+
+        pdf.text(
+          subjectLines,
+          x + padding + 1.2,
+          textY
+        );
+
+        textY +=
+          subjectLines.length * 3;
+
+        /*
+         * Docente
+         */
+
+        textY += 1;
+
+        pdf.setFont(
+          "helvetica",
+          "normal"
+        );
+
+        pdf.setFontSize(5);
+
+        pdf.setTextColor(
+          ...COLORS.muted
+        );
+
+        pdf.text(
+          teacherLines,
+          x + padding + 1.2,
+          textY
+        );
+
+        cardY +=
+          cardHeight + 1.5;
+      }
+    }
+
+    y += weekContentHeight;
+  }
+
+  /*
+   * ==========================================
+   * FOOTER
+   * ==========================================
+   */
+
+  const footerY =
+    PAGE_HEIGHT - 11;
+
+  pdf.setDrawColor(
+    ...COLORS.border
+  );
+
+  pdf.setLineWidth(0.25);
+
+  pdf.line(
+    MARGIN,
+    footerY - 3,
+    PAGE_WIDTH - MARGIN,
+    footerY - 3
+  );
+
+  pdf.setFont(
+    "helvetica",
+    "normal"
+  );
+
+  pdf.setFontSize(5.8);
+
+  pdf.setTextColor(
+    ...COLORS.muted
+  );
+
+  pdf.text(
+    "ENSA Carbó · IEFI 2026",
+    MARGIN,
+    footerY
+  );
+
+  pdf.text(
+    teacher,
+    PAGE_WIDTH / 2,
+    footerY,
+    {
+      align: "center",
+    }
+  );
+
+  pdf.text(
+    "Página 1 de 1",
+    PAGE_WIDTH - MARGIN,
+    footerY,
+    {
+      align: "right",
+    }
+  );
+
+  /*
+   * ==========================================
+   * DESCARGA
+   * ==========================================
+   */
+
+  const safeTeacherName =
+    teacher
+      .trim()
+      .replace(
+        /[<>:"/\\|?*]+/g,
+        ""
+      )
+      .replace(
+        /\s+/g,
+        "-"
+      );
+
+  const filename =
+    `IEFI-2026-Horario-${safeTeacherName}.pdf`;
+
+  pdf.save(filename);
+}
