@@ -40,9 +40,9 @@ const PLAN_DESCRIPTIONS: Record<
   string
 > = {
   PEP:
-    "Recorrido correspondiente al cronograma PEP 2026 de ENSA Carbó.",
+    "Cronograma PEP 2026 de ENSA Carbó.",
   PEI:
-    "Recorrido correspondiente al segundo cronograma institucional provisto.",
+    "Cronograma PEI 2026 de ENSA Carbó.",
 };
 
 const SECTION_ORDER: Section[] = [
@@ -1024,7 +1024,7 @@ export default function Home() {
               Instancias Evaluativas
               Finales Integradoras. Un
               cronograma para recorrer por
-              plan, año, sección y semana.
+              profesorado, año, sección y semana.
             </p>
 
           </div>
@@ -1106,7 +1106,7 @@ export default function Home() {
 
               <p>
                 Consultá el cronograma por
-                plan, año y sección.
+                profesorado, año y sección.
               </p>
 
               <span className="arrow">
@@ -1196,11 +1196,11 @@ export default function Home() {
                 <div>
 
                   <div className="section-kicker">
-                    02 · Tu recorrido
+                    02 · Tu cronograma 
                   </div>
 
                   <h2 className="section-title">
-                    Elegí plan, año y sección.
+                    Elegí profesorado, año y sección.
                   </h2>
 
                 </div>
@@ -1208,7 +1208,7 @@ export default function Home() {
                 <div className="context">
                   {selectedPlan
                     ? `Plan ${selectedPlan}`
-                    : "Seleccioná un plan"}
+                    : "Seleccioná un profesorado"}
                 </div>
 
               </div>
@@ -1237,7 +1237,7 @@ export default function Home() {
                 >
 
                   <div className="label">
-                    Plan
+                    Profesorado
                   </div>
 
                   <h3>
@@ -1277,7 +1277,7 @@ export default function Home() {
                 >
 
                   <div className="label">
-                    Plan
+                    Profesorado
                   </div>
 
                   <h3>
@@ -1754,7 +1754,7 @@ export default function Home() {
 
                   <div className="search-hint">
                     Buscá un docente o espacio
-                    dentro del recorrido
+                    dentro del profesorado 
                     seleccionado.
                   </div>
 
