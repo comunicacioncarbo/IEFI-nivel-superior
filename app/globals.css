@@ -2118,3 +2118,219 @@ p {
     margin-top: 32px;
   }
 }
+
+/* =========================================================
+   RESPONSIVE · EMBED / IFRAME
+   ========================================================= */
+
+/*
+ * La aplicación puede vivir dentro de un iframe con un
+ * ancho mucho menor que el viewport de escritorio.
+ * Estos ajustes hacen que la interfaz se adapte al ancho
+ * disponible sin alterar el diseño desktop.
+ */
+
+.plan-card {
+  min-width: 0;
+}
+
+.plan-card h3 {
+  font-size: clamp(38px, 7vw, 78px);
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.search {
+  min-width: 0;
+}
+
+
+/* ==========================================
+   TABLET / IFRAME MEDIANO
+   ========================================== */
+
+@media (max-width: 900px) {
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 64px 24px 58px;
+  }
+
+  .hero-side {
+    padding-left: 20px;
+  }
+
+  .hero-side .big {
+    font-size: 52px;
+  }
+
+  .section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .cron {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .section-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cron-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .search-wrap {
+    width: 100%;
+    max-width: 440px;
+  }
+
+  .year-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ==========================================
+   IFRAME DE ANCHO REDUCIDO
+   ========================================== */
+
+@media (max-width: 720px) {
+
+  .nav-inner {
+    height: 64px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .nav-links {
+    gap: 2px;
+  }
+
+  .nav-links button {
+    padding: 8px 9px;
+    font-size: 11px;
+  }
+
+  .hero {
+    padding: 48px 16px 42px;
+  }
+
+  .hero h1 {
+    font-size: clamp(48px, 11vw, 72px);
+  }
+
+  .hero p {
+    font-size: 17px;
+  }
+
+  .hero-side {
+    padding-left: 16px;
+  }
+
+  .hero-side .big {
+    font-size: 46px;
+  }
+
+  .section {
+    padding: 20px 16px 64px;
+  }
+
+  .section-title {
+    font-size: 34px;
+  }
+
+  .plan-grid {
+    gap: 12px;
+  }
+
+  .plan-card {
+    min-height: 220px;
+    padding: 24px;
+  }
+
+  .plan-card h3 {
+    margin-top: 28px;
+    font-size: clamp(38px, 7vw, 52px);
+    letter-spacing: -0.065em;
+  }
+
+  .plan-card p {
+    font-size: 14px;
+    line-height: 1.55;
+    padding-right: 24px;
+  }
+
+  .plan-card .arrow {
+    right: 20px;
+    bottom: 18px;
+    font-size: 24px;
+  }
+
+  .cron {
+    padding: 58px 16px 80px;
+  }
+
+  .search-wrap {
+    max-width: none;
+  }
+
+  .search {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .year-grid {
+    gap: 8px;
+  }
+
+  .year-card {
+    padding: 18px;
+  }
+}
+
+
+/* ==========================================
+   IFRAME / MÓVIL ANGOSTO
+   ========================================== */
+
+@media (max-width: 520px) {
+
+  .nav-links button {
+    padding: 7px 6px;
+    font-size: 10px;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 12vw, 60px);
+  }
+
+  .hero-side .big {
+    font-size: 40px;
+  }
+
+  .plan-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-card {
+    min-height: 210px;
+  }
+
+  .plan-card h3 {
+    font-size: clamp(42px, 13vw, 58px);
+  }
+
+  .year-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 30px;
+  }
+}
